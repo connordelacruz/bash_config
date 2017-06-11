@@ -1,0 +1,16 @@
+# Sources bash configuration files stored in sources/ subdirectory
+
+# Path to ~/.bash_config/sources
+SRC_PATH="$HOME/.bash_config/sources"
+
+# ENVIRONMENT VARIABLES
+
+# Custom .inputrc file
+export INPUTRC="$SRC_PATH/.inputrc"
+
+# TODO set PATH
+
+# CONFIG FILES
+
+# TODO include files in $SRC_PATH
+

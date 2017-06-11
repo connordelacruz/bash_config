@@ -124,8 +124,10 @@ fi
 
 # PATH
 # MacOS prevents overwriting /usr/bin, so this is required to use homebrew to update certain packages
+# TODO check if /usr/local/bin exists
 USRBIN="/usr/local/bin"
 # Custom bash scripts
+# TODO move this to ~/.bash_config/bin
 SCRIPTS="$HOME/bin"
 # Set PATH
 export PATH="$USRBIN:$SCRIPTS:$PATH"
