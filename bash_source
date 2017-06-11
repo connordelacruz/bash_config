@@ -1,16 +1,40 @@
 # Sources bash configuration files stored in sources/ subdirectory
 
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # Path to ~/.bash_config/sources
 SRC_PATH="$HOME/.bash_config/sources"
 
-# ENVIRONMENT VARIABLES
+
+# ENVIRONMENT VARIABLES TODO move to sources/variables
 
 # Custom .inputrc file
 export INPUTRC="$SRC_PATH/.inputrc"
-
-# TODO set PATH
+# PATH
+# MacOS prevents overwriting /usr/bin, so this is required to use homebrew to update certain packages
+# TODO check if /usr/local/bin exists
+USRBIN="/usr/local/bin"
+# Custom bash scripts
+SCRIPTS="$SRC_PATH/bin"
+# Set PATH
+export PATH="$USRBIN:$SCRIPTS:$PATH"
 
 # CONFIG FILES
 
-# TODO include files in $SRC_PATH
+# TODO split this file into different components for organization
+. "$SRC_PATH/.bashrc"
+
+# Environment variable definitions
+if [ -f "$SRC_PATH/variables" ]; then
+    . "$SRC_PATH/variables"
+fi
+
+# Alias definitions.
+if [ -f "$SRC_PATH/aliases" ]; then
+    . "$SRC_PATH/aliases"
+fi
 

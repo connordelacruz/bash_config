@@ -1,6 +1,6 @@
 # Aliases and functions. Included in .bashrc
 
-# FUNCTIONS
+# FUNCTIONS TODO create sources/functions and move this there
 
 # Shorthand command that changes directory and lists the contents of it
 cdl() { 

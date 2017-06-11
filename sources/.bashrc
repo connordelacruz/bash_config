@@ -1,13 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -75,6 +65,7 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
+# TODO Move to aliases file
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -87,29 +78,15 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+# TODO Move to aliases file
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
+# TODO Move to aliases file
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Environment variable definitions
-# Declare environment variables in .bash_variables
-
-if [ -f ~/.bash_variables ]; then
-    . ~/.bash_variables
-fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -122,12 +99,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# PATH
-# MacOS prevents overwriting /usr/bin, so this is required to use homebrew to update certain packages
-# TODO check if /usr/local/bin exists
-USRBIN="/usr/local/bin"
-# Custom bash scripts
-# TODO move this to ~/.bash_config/bin
-SCRIPTS="$HOME/bin"
-# Set PATH
-export PATH="$USRBIN:$SCRIPTS:$PATH"
+
