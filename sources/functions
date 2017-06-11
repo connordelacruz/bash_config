@@ -1,0 +1,8 @@
+# Bash Functions
+
+
+# Shorthand command that changes directory and lists the contents of it
+cdl() {
+    cd "$@";
+    l;
+}
