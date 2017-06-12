@@ -1,4 +1,6 @@
+# ==============================================================================
 # Environment Variables
+# ==============================================================================
 
 
 # ------------------------------------------------------------------------------
@@ -10,7 +12,7 @@ export INPUTRC="$SRC_PATH/.inputrc"
 
 # PATH
 # MacOS prevents overwriting /usr/bin, so this is required to use homebrew to update certain packages
-# TODO check if /usr/local/bin exists
+# TODO move to Mac-specific configuration?
 USRBIN="/usr/local/bin"
 # Custom bash scripts
 SCRIPTS="$SRC_PATH/bin"
