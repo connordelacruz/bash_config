@@ -19,6 +19,8 @@ echo '. ~/.bash_config/bash_source' > ~/.bashrc
 
 # TODO install vimrc stuff
 
+# TODO copy .fonts to ~
+
 echo 'Bash config installed.'
 echo 'Restarting bash.'
 
