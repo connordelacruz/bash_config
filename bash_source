@@ -6,7 +6,7 @@
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return;;
 esac
 
 # Path to ~/.bash_config/sources
@@ -35,3 +35,6 @@ fi
 if [ -f "$SRC_PATH/functions" ]; then
     . "$SRC_PATH/functions"
 fi
+
+# TODO Add directory for custom config files and source it
+
