@@ -23,3 +23,6 @@ export PATH="$USRBIN:$SCRIPTS:$PATH"
 # ------------------------------------------------------------------------------
 # Custom variables
 # ------------------------------------------------------------------------------
+
+# Set vim as the default git editor
+export GIT_EDITOR=vim
