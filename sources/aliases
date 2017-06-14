@@ -33,6 +33,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Custom Aliases
 # ------------------------------------------------------------------------------
 
+alias vi='vim'
+
 # Alias c to cdl function
 alias c='cdl'
 
