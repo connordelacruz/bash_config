@@ -1,2 +1,6 @@
+# TAB COMPLETION
+# tab completion ignores case
 set completion-ignore-case on
+# Cycle through options
 TAB: menu-complete
+
