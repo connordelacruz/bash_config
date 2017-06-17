@@ -2,5 +2,5 @@
 # (Excluding .gitignore and source file)
 *
 !.gitignore
-!custom_source
+!local_source
 

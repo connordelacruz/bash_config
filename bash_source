@@ -36,5 +36,6 @@ if [ -f "$SRC_PATH/functions" ]; then
     . "$SRC_PATH/functions"
 fi
 
-# TODO Add directory for custom config files and source it
+# include sources specific to this machine 
+. "$SRC_PATH/local/local_source"
 

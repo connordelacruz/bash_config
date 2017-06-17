@@ -1,6 +1,5 @@
 # Source files in this directory if they exist
 
-# TODO implement
 # Path to ~/.bash_config/sources/local
 LOCAL_SRC_PATH="$HOME/.bash_config/sources/local"
 
