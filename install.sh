@@ -17,7 +17,14 @@ fi
 # ~/.bashrc is a one-liner that sources .bash_config/bash_source
 echo '. ~/.bash_config/bash_source' > ~/.bashrc
 
-# TODO install vimrc stuff
+# Install "the ultimate vimrc" if it isn't installed already
+if [ ! -d ~/.vim_runtime ]; then
+    # TODO: Confirm installation
+    echo '~/.vim_runtime not found, installing...'
+    git clone https://github.com/amix/vimrc.git ~/.vim_runtime
+    . ~/.vim_runtime/install_awesome_vimrc.sh
+fi
+# TODO: my_configs.vim is a on-liner that sources .bash_config/vim_sources.vim
 
 # TODO copy .fonts to ~
 
