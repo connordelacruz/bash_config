@@ -37,5 +37,7 @@ if [ -f "$SRC_PATH/functions" ]; then
 fi
 
 # include sources specific to this machine 
-. "$SRC_PATH/local/local_source"
+if [ -f "$SRC_PATH/local/local_source" ]; then
+    . "$SRC_PATH/local/local_source"
+fi
 
