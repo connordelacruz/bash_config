@@ -24,7 +24,10 @@ if [ ! -d ~/.vim_runtime ]; then
     git clone https://github.com/amix/vimrc.git ~/.vim_runtime
     . ~/.vim_runtime/install_awesome_vimrc.sh
 fi
-# TODO: my_configs.vim is a on-liner that sources .bash_config/vim_sources.vim
+# TODO: compare file contents before setting up my_configs.vim
+# Set cutsom configurations for vim
+. ~/.bash_config/vim/setup.sh
+
 
 # TODO copy .fonts to ~
 

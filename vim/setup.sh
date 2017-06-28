@@ -14,3 +14,6 @@ fi
 
 # my_configs.vim is a one-liner that sources .bash_config/vim/my_configs.vim
 echo 'source ~/.bash_config/vim/my_configs.vim' > ~/.vim_runtime/my_configs.vim
+
+echo 'Vim custom configurations set.'
+
