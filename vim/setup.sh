@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo 'Setting up custom vim configurations...'
+
 # Backup existing my_configs.vim
 if [ -f ~/.vim_runtime/my_configs.vim ]; then
     echo 'Backing up current my_configs.vim...'
