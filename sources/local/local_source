@@ -27,4 +27,4 @@ if [ -f "$LOCAL_SRC_PATH/functions" ]; then
     . "$LOCAL_SRC_PATH/functions"
 fi
 
-
+unset LOCAL_SRC_PATH
