@@ -19,6 +19,7 @@ SCRIPTS="$SRC_PATH/bin"
 # Set PATH
 export PATH="$USRBIN:$SCRIPTS:$PATH"
 
+unset USRBIN SCRIPTS
 
 # ------------------------------------------------------------------------------
 # Custom variables
