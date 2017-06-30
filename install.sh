@@ -4,6 +4,7 @@ set -e
 echo 'Installing bash config...'
 
 # Backup existing .bashrc
+# TODO: copy .bash_aliases, .bash_variables, etc to a directory in local?
 if [ -f ~/.bashrc ]; then
     echo 'Backing up current .bashrc...'
     cd ~
@@ -18,6 +19,7 @@ fi
 echo '. ~/.bash_config/bash_source' > ~/.bashrc
 
 # Install "the ultimate vimrc" if it isn't installed already
+# TODO: move this to vim/install.sh and merge w/ vim/setup.sh
 if [ ! -d ~/.vim_runtime ]; then
     # TODO: Confirm installation
     echo '~/.vim_runtime not found, installing...'

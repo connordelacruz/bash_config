@@ -41,3 +41,5 @@ if [ -f "$SRC_PATH/local/local_source" ]; then
     . "$SRC_PATH/local/local_source"
 fi
 
+unset SRC_PATH
+
