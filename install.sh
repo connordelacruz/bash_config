@@ -16,7 +16,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # ~/.bashrc is a one-liner that sources .bash_config/bash_source
-echo '. ~/.bash_config/bash_source' > ~/.bashrc
+echo '. ~/.bash_config/bash_source.sh' > ~/.bashrc
 
 # Install "the ultimate vimrc" if it isn't installed already
 # TODO: move this to vim/install.sh and merge w/ vim/setup.sh
@@ -28,7 +28,7 @@ if [ ! -d ~/.vim_runtime ]; then
 fi
 # TODO: compare file contents before setting up my_configs.vim
 # Set cutsom configurations for vim
-. ~/.bash_config/vim/setup.sh
+#. ~/.bash_config/vim/setup.sh
 
 
 # TODO copy .fonts to ~
