@@ -19,7 +19,7 @@ fi
 echo '. ~/.bash_config/bash_source.sh' > ~/.bashrc
 
 # Install "the ultimate vimrc" if it isn't installed already
-# TODO: move this to vim/install.sh and merge w/ vim/setup.sh
+# TODO: Create separate repo for vim configs and pull from there?
 if [ ! -d ~/.vim_runtime ]; then
     # TODO: Confirm installation
     echo '~/.vim_runtime not found, installing...'
@@ -28,10 +28,8 @@ if [ ! -d ~/.vim_runtime ]; then
 fi
 # TODO: compare file contents before setting up my_configs.vim
 # Set cutsom configurations for vim
-#. ~/.bash_config/vim/setup.sh
+. ~/.bash_config/vim/setup.sh
 
-
-# TODO copy .fonts to ~
 
 echo 'Bash config installed.'
 echo 'Restarting bash.'

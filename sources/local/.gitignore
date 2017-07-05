@@ -1,6 +1,0 @@
-# Ignore everything in here since it's specific to the machine
-# (Excluding .gitignore and source file)
-*
-!.gitignore
-!local_source
-
