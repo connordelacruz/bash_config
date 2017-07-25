@@ -14,12 +14,12 @@ export INPUTRC="$SRC_GLOBAL_PATH/inputrc"
 # MacOS prevents overwriting /usr/bin, so this is required to use homebrew to update certain packages
 # TODO move to Mac-specific configuration?
 USRBIN="/usr/local/bin"
-# Custom bash scripts
-SCRIPTS="$SRC_GLOBAL_PATH/bin"
+# Custom bash scripts TODO: implement or remove?
+#SCRIPTS="$SRC_GLOBAL_PATH/bin"
 # Set PATH
-export PATH="$USRBIN:$SCRIPTS:$PATH"
+export PATH="$USRBIN:$PATH"
 
-unset USRBIN SCRIPTS
+unset USRBIN
 
 # ------------------------------------------------------------------------------
 # Custom variables
