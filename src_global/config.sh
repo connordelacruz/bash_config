@@ -34,6 +34,12 @@ fi
 # Color prompt
 # ------------------------------------------------------------------------------
 
+# Enable base16 shell
+if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
+    [ -n "$PS1" ] && [ -s $MODULE_PATH/base16-shell/profile_helper.sh ] && eval "$($MODULE_PATH/base16-shell/profile_helper.sh)"
+    # TODO: run command and change colorscheme
+fi
+
 # Set 256 color if this is an XFCE Terminal
 # Source: https://stackoverflow.com/a/29382288
 if [ "$COLORTERM" == "xfce4-terminal" ]; then
