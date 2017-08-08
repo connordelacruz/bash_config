@@ -13,7 +13,6 @@ cdl() {
 # Print todo/fixme comments in the specified directory
 todo() {
     # If no args are provided, call from current directory
-    # TODO: set to empty string instead to use a relative path
-    proj_dir="${1:-$(pwd)}";
+    proj_dir="${1:-.}";
     grep -REIin --exclude-dir='.git' "TODO|FIXME" $proj_dir;
 }
