@@ -64,6 +64,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# TODO: more readable color prompt section
 if [ "$color_prompt" = yes ]; then
     PS1='\[\033[01;92m\]\u@\h\[\033[00m\] \[\033[00;32m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]'
     export CLICOLOR=1
