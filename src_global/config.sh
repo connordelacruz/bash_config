@@ -66,7 +66,7 @@ fi
 
 # TODO: more readable color prompt section
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;92m\]\u@\h\[\033[00m\] \[\033[00;32m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]'
+    PS1='\[\033[01;92m\]\u@\h\[\033[00m\] \[\033[01;32m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]'
     export CLICOLOR=1
     export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 else
@@ -80,6 +80,7 @@ unset color_prompt force_color_prompt
 # TODO: better categorization
 # ------------------------------------------------------------------------------
 # If this is an xterm set the title to user@host:dir
+# TODO: remove?
 case "$TERM" in
 xterm*|rxvt*)
     PS1="\[\e]0;\u@\h: \w\a\]$PS1"
