@@ -66,7 +66,7 @@ fi
 
 # TODO: more readable color prompt section
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;92m\]\u@\h\[\033[00m\] \[\033[01;32m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]'
+    PS1='\[\033[01;92m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]'
     export CLICOLOR=1
     export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 else
