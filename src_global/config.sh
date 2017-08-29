@@ -79,15 +79,6 @@ unset color_prompt force_color_prompt
 # More stolen from the default Ubuntu .bashrc
 # TODO: better categorization
 # ------------------------------------------------------------------------------
-# If this is an xterm set the title to user@host:dir
-# TODO: remove?
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
