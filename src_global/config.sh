@@ -35,6 +35,12 @@ if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
     # TODO: run command and change colorscheme
 fi
 
+# Set $COLORTERM to truecolor for iTerm2
+if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
+    export COLORTERM=truecolor
+fi
+
+# TODO: more reliable check? e.g. user terminfo
 # Set 256 color if this is an XFCE Terminal
 # Source: https://stackoverflow.com/a/29382288
 if [ "$COLORTERM" == "xfce4-terminal" ]; then
