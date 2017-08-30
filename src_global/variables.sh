@@ -23,5 +23,6 @@ unset USRBIN
 # Custom variables
 # ------------------------------------------------------------------------------
 
+# TODO: set to nvim instead if command -v nvim returns something?
 # Set vim as the default git editor
 export GIT_EDITOR=vim
