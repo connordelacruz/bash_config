@@ -36,7 +36,7 @@ if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
 fi
 
 # Set $COLORTERM to truecolor for iTerm2
-if [ "$TERM_PROGRAM" == "iTerm.app" ]; then
+if [[ "$TERM_PROGRAM" == "iTerm.app" || "$TERM_PROGRAM" == "Hyper" ]]; then
     export COLORTERM=truecolor
 fi
 
