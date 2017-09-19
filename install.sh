@@ -16,15 +16,19 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # ~/.bashrc is a one-liner that sources .bash_config/bash_source
+echo 'Creating new .bashrc...'
 echo '. ~/.bash_config/bash_source.sh' > ~/.bashrc
+echo 'New .bashrc created.'
 
 # initialize submodules
+echo 'Initializing plugin submodules...'
 current_dir="$(pwd)"
 cd ~/.bash_config
 git submodule init
 git submodule update
 cd "$current_dir"
 unset current_dir
+echo 'Plugin submodules initialized.'
 
 echo 'Bash config installed.'
 echo 'Restarting bash.'
