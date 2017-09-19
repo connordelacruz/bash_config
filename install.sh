@@ -18,6 +18,14 @@ fi
 # ~/.bashrc is a one-liner that sources .bash_config/bash_source
 echo '. ~/.bash_config/bash_source.sh' > ~/.bashrc
 
+# initialize submodules
+current_dir="$(pwd)"
+cd ~/.bash_config
+git submodule init
+git submodule update
+cd "$current_dir"
+unset current_dir
+
 echo 'Bash config installed.'
 echo 'Restarting bash.'
 

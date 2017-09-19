@@ -3,4 +3,6 @@
 current_dir="$(pwd)"
 cd ~/.bash_config/
 git pull --rebase
+git submodule update
 cd "$current_dir"
+unset current_dir
