@@ -20,9 +20,12 @@ export PATH="$USRBIN:$PATH"
 unset USRBIN
 
 # ------------------------------------------------------------------------------
-# Custom variables
+# Configurations
 # ------------------------------------------------------------------------------
 
 # TODO: set to nvim instead if command -v nvim returns something?
 # Set vim as the default git editor
 export GIT_EDITOR=vim
+
+# grep color output
+export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
