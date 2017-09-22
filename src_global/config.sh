@@ -75,6 +75,7 @@ if [ "$color_prompt" = yes ]; then
     export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
     export CLICOLOR=1
     export LSCOLORS=exBxhxDxfxhxhxhxhxcxcx
+    export LS_COLORS="di=34:ln=1;31:so=37:pi=1;33:ex=35:bd=37:cd=37:su=37:sg=37:tw=32:ow=32"
 else
     PS1='\u@\h:\w\$ '
 fi
