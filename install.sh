@@ -4,7 +4,6 @@ set -e
 echo 'Installing bash config...'
 
 # Backup existing .bashrc
-# TODO: copy .bash_aliases, .bash_variables, etc to a directory in local?
 if [ -f ~/.bashrc ]; then
     echo 'Backing up current .bashrc...'
     cd ~
@@ -23,11 +22,14 @@ echo 'New .bashrc created.'
 # initialize submodules
 echo 'Initializing plugin submodules...'
 current_dir="$(pwd)"
+
 cd ~/.bash_config
-git submodule init
-git submodule update
+
+git submodule update --init --recursive
+
 cd "$current_dir"
 unset current_dir
+
 echo 'Plugin submodules initialized.'
 
 echo 'Bash config installed.'

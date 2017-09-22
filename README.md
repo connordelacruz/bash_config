@@ -17,4 +17,5 @@ sh ~/.bash_config/install.sh
   - `functions.sh` - Function definitions
   - `inputrc` - inputrc file (set in `variables.sh`)
 - `src_local/` - Additional bash configurations specific to the machine. These are ignored by git.
-  - `init.sh` - Looks for `variables.sh`, `config.sh`, `aliases.sh`, and `functions.sh` in `src_local/` and sources them if they exist. Sourced in `bash_source.sh`. 
+  - `init.sh` - Looks for `variables.sh`, `config.sh`, `aliases.sh`, and `functions.sh` in `src_local/` and sources them if they exist. Sourced in `bash_source.sh`.
+- `modules/` - git submodules.  
