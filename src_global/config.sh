@@ -71,6 +71,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # TODO: more readable color prompt section
+
+
+# ------------------------------------------------------------------------------
+# PS1
+# ------------------------------------------------------------------------------
+
 if [ "$color_prompt" = yes ]; then
     export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
     export CLICOLOR=1
@@ -80,6 +86,15 @@ else
     PS1='\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
+esac
 
 
 # ------------------------------------------------------------------------------
