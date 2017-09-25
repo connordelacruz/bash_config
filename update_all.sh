@@ -7,11 +7,13 @@ current_dir="$(pwd)"
 
 # vim_runtime
 if [ -f ~/.vim_runtime/update.sh ]; then
+    echo 'Updating vim runtime...'
     . ~/.vim_runtime/update.sh
 fi
 
 # bash_config
 if [ -f ~/.bash_config/update.sh ]; then
+    echo 'Updating bash configurations...'
     . ~/.bash_config/update.sh
 fi
 
