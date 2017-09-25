@@ -23,9 +23,13 @@ unset USRBIN
 # Configurations
 # ------------------------------------------------------------------------------
 
-# TODO: set to nvim instead if command -v nvim returns something?
-# Set vim as the default git editor
-export GIT_EDITOR=vim
+# Set nvim as the default git editor if available
+if [[ "$(command -v nvim)" ]]; then
+    export GIT_EDITOR=nvim
+# Otherwise set vim as the default git editor
+else
+    export GIT_EDITOR=vim
+fi
 
 # grep color output
 export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
