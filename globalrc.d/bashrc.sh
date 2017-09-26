@@ -11,9 +11,6 @@
 # => Environment
 # ---------------------------------------
 
-# Custom .inputrc file
-export INPUTRC="$SRC_GLOBAL_PATH/inputrc"
-
 # PATH
 local_bin="/usr/local/bin"
 

@@ -2,6 +2,15 @@
 # Sources local configurations
 # ==============================================================================
 
+# Custom inputrc file (overrides globalrc.d/inputrc)
+if [ -f "$SRC_LOCAL_PATH/inputrc" ]; then
+    export INPUTRC="$SRC_LOCAL_PATH/inputrc"
+fi
+
+# General configurations
+if [ -f "$SRC_LOCAL_PATH/bashrc.sh" ]; then
+    . "$SRC_LOCAL_PATH/bashrc.sh"
+fi
 
 # Environment variable definitions
 if [ -f "$SRC_LOCAL_PATH/variables.sh" ]; then
