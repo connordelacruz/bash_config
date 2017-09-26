@@ -7,6 +7,20 @@
 # General
 # ------------------------------------------------------------------------------
 
+# ---------------------------------------
+# => Environment
+# ---------------------------------------
+
+# Custom .inputrc file
+export INPUTRC="$SRC_GLOBAL_PATH/inputrc"
+
+# PATH
+local_bin="/usr/local/bin"
+
+export PATH="$local_bin:$PATH"
+
+unset local_bin
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -24,9 +38,9 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# ------------------------------------------------------------------------------
-# History
-# ------------------------------------------------------------------------------
+# ---------------------------------------
+# => History
+# ---------------------------------------
 
 # don't put duplicate lines or lines starting with space in the history
 HISTCONTROL=ignoreboth
@@ -47,6 +61,23 @@ else
     HISTSIZE=100000
     HISTFILESIZE=200000
 fi
+
+# ---------------------------------------
+# => Defaults
+# ---------------------------------------
+
+## Editors
+
+# See what members of the vi family are available
+if [[ "$(command -v nvim)" ]]; then
+    export VISUAL=nvim
+elif [[ "$(command -v vim)" ]]; then
+    export VISUAL=vim
+else
+    export VISUAL=vi
+fi
+# set EDITOR to match
+export EDITOR="$VISUAL"
 
 # ------------------------------------------------------------------------------
 # Aliases
