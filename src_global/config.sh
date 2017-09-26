@@ -7,6 +7,17 @@
 # General
 # ------------------------------------------------------------------------------
 
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
 # update window size after each command
 shopt -s checkwinsize
 
@@ -33,13 +44,20 @@ HISTSIZE=100000
 HISTFILESIZE=200000
 
 # ------------------------------------------------------------------------------
-# Color prompt
+# Color Prompt
 # ------------------------------------------------------------------------------
 
-# Enable base16 shell
+# ---------------------------------------
+# => Base16 Shell
+# ---------------------------------------
+
 if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
     [ -n "$PS1" ] && [ -s $MODULE_PATH/base16-shell/profile_helper.sh ] && eval "$($MODULE_PATH/base16-shell/profile_helper.sh)"
 fi
+
+# ---------------------------------------
+# => TERM and COLORTERM
+# ---------------------------------------
 
 # Set $COLORTERM to truecolor for iTerm2
 if [[ "$TERM_PROGRAM" == "iTerm.app" || "$TERM_PROGRAM" == "Hyper" ]]; then
@@ -53,7 +71,6 @@ if [[ "$COLORTERM" == "mate-terminal" ]]; then
 fi
 
 # Set 256 color if this is an XFCE Terminal
-# Source: https://stackoverflow.com/a/29382288
 if [ "$COLORTERM" == "xfce4-terminal" ]; then
     export TERM=xterm-256color
 fi
@@ -68,6 +85,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
+# TODO: remove and just use color_prompt
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -81,12 +99,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# TODO: more readable color prompt section
-
-
 # ------------------------------------------------------------------------------
 # PS1
 # ------------------------------------------------------------------------------
+
+# ---------------------------------------
+# => PS1 Colors
+# ---------------------------------------
 
 if [ "$color_prompt" = yes ]; then
     export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
@@ -98,28 +117,15 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
+# ---------------------------------------
+# => XTerm Window Title
+# ---------------------------------------
+
 case "$TERM" in
     xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        PS1="\[\e]0;\u@\h: \w\a\]$PS1"
         ;;
     *)
         ;;
 esac
 
-
-# ------------------------------------------------------------------------------
-# More stolen from the default Ubuntu .bashrc
-# TODO: better categorization
-# ------------------------------------------------------------------------------
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-        . /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-    fi
-fi
