@@ -99,6 +99,20 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# ---------------------------------------
+# => Color Aliases
+# ---------------------------------------
+
+if [ "$color_prompt" = yes ]; then
+    # MacOS doesn't have --color option
+    if [[ "$(uname -s)" != "Darwin"* ]]; then
+        alias ls='ls --color=auto'
+    fi
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 # ------------------------------------------------------------------------------
 # PS1
 # ------------------------------------------------------------------------------

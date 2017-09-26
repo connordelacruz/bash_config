@@ -2,22 +2,6 @@
 # Aliases and functions. Included in .bashrc
 # ==============================================================================
 
-
-# ------------------------------------------------------------------------------
-# Color support
-# ------------------------------------------------------------------------------
-
-# enable color support of ls and also add handy aliases
-if [[ "$TERM" == "xterm-"*"color" ]]; then
-    # MacOS doesn't have --color option
-    if [[ "$(uname -s)" != "Darwin"* ]]; then
-        alias ls='ls --color=auto'
-    fi
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # ------------------------------------------------------------------------------
 # ls aliases
 # ------------------------------------------------------------------------------
