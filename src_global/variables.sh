@@ -31,5 +31,3 @@ else
     export GIT_EDITOR=vim
 fi
 
-# grep color output
-export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'

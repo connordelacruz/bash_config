@@ -100,17 +100,22 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # ---------------------------------------
-# => Color Aliases
+# => Color Aliases and Environment Variables
 # ---------------------------------------
-
 if [ "$color_prompt" = yes ]; then
+    # ls
     # MacOS doesn't have --color option
     if [[ "$(uname -s)" != "Darwin"* ]]; then
         alias ls='ls --color=auto'
     fi
+    export CLICOLOR=1
+    export LSCOLORS=exBxhxDxfxhxhxhxhxcxcx
+    export LS_COLORS="di=34:ln=1;31:so=37:pi=1;33:ex=35:bd=37:cd=37:su=37:sg=37:tw=32:ow=32"
+    # grep
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 fi
 
 # ------------------------------------------------------------------------------
@@ -123,9 +128,6 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
-    export CLICOLOR=1
-    export LSCOLORS=exBxhxDxfxhxhxhxhxcxcx
-    export LS_COLORS="di=34:ln=1;31:so=37:pi=1;33:ex=35:bd=37:cd=37:su=37:sg=37:tw=32:ow=32"
 else
     PS1='\u@\h:\w\$ '
 fi
