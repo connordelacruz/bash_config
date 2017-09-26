@@ -4,26 +4,33 @@
 
 
 # ------------------------------------------------------------------------------
-# Terminal configurations
+# General
 # ------------------------------------------------------------------------------
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# update window size after each command
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# ------------------------------------------------------------------------------
+# History
+# ------------------------------------------------------------------------------
+
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# save multi-line commands as a single history entry
+shopt -s cmdhist
+
+# Set size of command history
+# TODO: if bash 4.3+, set to -1 for unlimited history (see below)
+# https://stackoverflow.com/questions/9457233/unlimited-bash-history
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # ------------------------------------------------------------------------------
 # Color prompt
