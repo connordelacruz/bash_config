@@ -88,6 +88,10 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Bad habits developed during a Windows sysadmin internship
+alias md='mkdir'
+alias cls='clear'
+
 # ------------------------------------------------------------------------------
 # Color Prompt
 # ------------------------------------------------------------------------------

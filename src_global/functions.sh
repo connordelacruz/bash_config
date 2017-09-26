@@ -8,7 +8,9 @@ cdl() {
     cd "$@";
     l;
 }
-
+# alias it to c (redundant, but cdl is a more informative function name and
+# c is easier to type)
+alias c='cdl'
 
 # Print todo/fixme comments in the specified directory
 todo() {
