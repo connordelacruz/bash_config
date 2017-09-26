@@ -38,10 +38,15 @@ shopt -s histappend
 shopt -s cmdhist
 
 # Set size of command history
-# TODO: if bash 4.3+, set to -1 for unlimited history (see below)
+# If on version 4.3+, set to -1 for unlimited history
 # https://stackoverflow.com/questions/9457233/unlimited-bash-history
-HISTSIZE=100000
-HISTFILESIZE=200000
+if ((BASH_VERSINFO[0] >= 4 && BASH_VERSINFO[1] >= 3)); then
+    HISTSIZE=-1
+    HISTFILESIZE=-1
+else
+    HISTSIZE=100000
+    HISTFILESIZE=200000
+fi
 
 # ------------------------------------------------------------------------------
 # Color Prompt
@@ -82,21 +87,14 @@ case "$TERM" in
         ;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-# TODO: remove and just use color_prompt
-force_color_prompt=yes
+# ---------------------------------------
+# => Check Color Support
+# ---------------------------------------
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    color_prompt=yes
+else
+    color_prompt=
 fi
 
 # ---------------------------------------
