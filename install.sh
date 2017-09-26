@@ -14,9 +14,9 @@ if [ -f ~/.bashrc ]; then
     echo "Backup of .bashrc created ($backup_file)"
 fi
 
-# ~/.bashrc is a one-liner that sources .bash_config/bash_source
+# ~/.bashrc is a one-liner that sources .bash_config/init
 echo 'Creating new .bashrc...'
-echo '. ~/.bash_config/bash_source.sh' > ~/.bashrc
+echo '. ~/.bash_config/init.sh' > ~/.bashrc
 echo 'New .bashrc created.'
 
 # initialize submodules

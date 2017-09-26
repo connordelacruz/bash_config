@@ -10,9 +10,9 @@ case $- in
 esac
 
 # Path to shared configuration sources
-SRC_GLOBAL_PATH="$HOME/.bash_config/src_global"
+SRC_GLOBAL_PATH="$HOME/.bash_config/globalrc.d"
 # Path to local configuration sources
-SRC_LOCAL_PATH="$HOME/.bash_config/src_local"
+SRC_LOCAL_PATH="$HOME/.bash_config/localrc.d"
 # Path to installed modules
 MODULE_PATH="$HOME/.bash_config/modules"
 
