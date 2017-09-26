@@ -187,3 +187,23 @@ case "$TERM" in
         ;;
 esac
 
+# ------------------------------------------------------------------------------
+# Shorthand Functions
+# ------------------------------------------------------------------------------
+
+# cd into a directory and list its contents
+cdl() {
+    cd "$@";
+    l;
+}
+# alias it to c
+#(redundant, but cdl is a more informative function name and c is easier to type)
+alias c='cdl'
+
+# Print todo/fixme comments in the specified directory
+todo() {
+    # If no args are provided, call from current directory
+    proj_dir="${1:-.}";
+    grep -REIin --exclude-dir='.git' "TODO|FIXME" $proj_dir;
+}
+
