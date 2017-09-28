@@ -103,6 +103,9 @@ fi
 
 # ---------------------------------------
 # => Platform-Specific Configs
+# NOTE: The COLORTERM=truecolor stuff is for use with our vim_runtime config
+# so it can appropriately set color space settings and select a colorscheme
+# that's compatible with the terminal emulator.
 # ---------------------------------------
 
 # Set $COLORTERM to truecolor for iTerm2
@@ -121,16 +124,22 @@ if [ "$COLORTERM" == "xfce4-terminal" ]; then
     export TERM=xterm-256color
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+# NOTE: gnome-terminal doesn't set $COLORTERM, so there doesn't appear to
+# be a good way of detecting it. In Profile Preferences > Command:
+# - Check 'Run command as a login shell'
+# - Check 'Run a custom command instead of my shell'
+# - Set 'Custom command' to:
+#       env COLORTERM=truecolor /bin/bash
+# - Set 'When command exits' to 'Exit the terminal'
+
+# ---------------------------------------
+# => Check Color Support
+# ---------------------------------------
 case "$TERM" in
     xterm-color|xterm-256color)
         color_prompt=yes
         ;;
 esac
-
-# ---------------------------------------
-# => Check Color Support
-# ---------------------------------------
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
     color_prompt=yes
