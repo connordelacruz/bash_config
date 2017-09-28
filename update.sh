@@ -26,3 +26,5 @@ cd "$current_dir"
 unset current_dir
 
 echo 'Finished.'
+
+# TODO: if changes were pulled, restart bash
