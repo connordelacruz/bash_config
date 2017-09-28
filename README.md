@@ -18,6 +18,7 @@ sh ~/.bash_config/install.sh
 ## Directory Structure
 // TODO: update this info
 
+* `install.sh` - Backs up the existing `~/.bashrc` (if one exists) and creates a one-line `.bashrc` that sources `~/.bash_config/init.sh`
 * `init.sh` - Sources `globalrc.d/init.sh` and `localrc.d/init.sh`
 * `globalrc.d/` - Shared runtime configuration files  
     * `init.sh` - Sources all bash configuration files in directory
