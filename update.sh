@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# TODO: Add --help argument
+# TODO: Add --clean argument (run git clean -dff)
+# TODO: Add --check argument (checks for updates, doesn't apply)
+
 # Older versions of git don't have the -C option
 current_dir="$(pwd)"
 cd ~/.bash_config/
