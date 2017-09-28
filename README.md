@@ -1,7 +1,6 @@
 # Bash Config
-Over the past few years, I've found myself having to work on several computers and VMs with a variety of operating systems, bash versions, and terminal emulators. I created this repo to share my bash runtime configurations across each of these platforms, while taking into account compatibility with a wide range of environments. I also wanted to make it reasonably simple to add machine- or job-specific configurations on top of these without having to modify files in the repository.  
 
-Feel free to fork it or use it as a reference for your own bashrc. You can use it as-is too if you want, but many of the configurations are personal preference.
+My .bashrc repo. Designed to be reasonably portable across a variety of operating systems, bash versions, and terminal emulators and allow for additional configurations specific to a machine.
 
 ## Features
 // TODO  
@@ -19,10 +18,11 @@ sh ~/.bash_config/install.sh
 ## Directory Structure
 // TODO: update this info
 
+* `init.sh` - Sources `globalrc.d/init.sh` and `localrc.d/init.sh`
 * `globalrc.d/` - Shared runtime configuration files  
-    * `init.sh` - Sources all bash configuration files in directory. Sourced in `../init.sh`
+    * `init.sh` - Sources all bash configuration files in directory
     * `bashrc.sh` - Bash runtime configurations
     * `inputrc` - Input configurations
 * `localrc.d/` - Additional configurations specific to the machine. These are ignored by git.  
-    * `init.sh` - Looks for `bashrc.sh`, `inputrc`, `variables.sh`, `config.sh`, `aliases.sh`, and `functions.sh` in `localrc.d/` and sources them if they exist. Sourced in `../init.sh`.  
+    * `init.sh` - Looks for `bashrc.sh`, `inputrc`, `variables.sh`, `config.sh`, `aliases.sh`, and `functions.sh` in `localrc.d/` and sources them if they exist
 * `modules/` - git submodules.  
