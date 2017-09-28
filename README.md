@@ -5,7 +5,7 @@ My .bashrc repo. Designed to be reasonably portable across a variety of operatin
 ## Install Instructions
 Clone repo as ~/.bash_config and run install script:
 ```
-git clone https://connordelacruz@bitbucket.org/connordelacruz/bash_config.git ~/.bash_config
+git clone https://github.com/connordelacruz/bash_config.git ~/.bash_config
 sh ~/.bash_config/install.sh
 ```
 
