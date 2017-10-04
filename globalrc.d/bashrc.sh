@@ -1,14 +1,24 @@
 # ==============================================================================
 # Bash Configurations
+#
+# Author: Connor de la Cruz
+# Repo: https://github.com/connordelacruz/bash_config
+#
+# Sections:
+# => General
+# => Aliases
+# => Color Prompt
+# => PS1
+# => Shorthand Functions
 # ==============================================================================
 
 
 # ------------------------------------------------------------------------------
-# General
+# => General
 # ------------------------------------------------------------------------------
 
 # ---------------------------------------
-# => Environment
+# -> Environment
 # ---------------------------------------
 
 # PATH
@@ -36,7 +46,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # ---------------------------------------
-# => History
+# -> History
 # ---------------------------------------
 
 # don't put duplicate lines or lines starting with space in the history
@@ -60,7 +70,7 @@ else
 fi
 
 # ---------------------------------------
-# => Defaults
+# -> Defaults
 # ---------------------------------------
 
 ## Editors
@@ -77,7 +87,7 @@ fi
 export EDITOR="$VISUAL"
 
 # ------------------------------------------------------------------------------
-# Aliases
+# => Aliases
 # ------------------------------------------------------------------------------
 
 # ls
@@ -90,11 +100,11 @@ alias md='mkdir'
 alias cls='clear'
 
 # ------------------------------------------------------------------------------
-# Color Prompt
+# => Color Prompt
 # ------------------------------------------------------------------------------
 
 # ---------------------------------------
-# => Base16 Shell
+# -> Base16 Shell
 # ---------------------------------------
 
 if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
@@ -102,7 +112,7 @@ if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
 fi
 
 # ---------------------------------------
-# => Platform-Specific Configs
+# -> Platform-Specific Configs
 # NOTE: The COLORTERM=truecolor stuff is for use with our vim_runtime config
 # so it can appropriately set color space settings and select a colorscheme
 # that's compatible with the terminal emulator.
@@ -133,7 +143,7 @@ fi
 # - Set 'When command exits' to 'Exit the terminal'
 
 # ---------------------------------------
-# => Check Color Support
+# -> Check Color Support
 # ---------------------------------------
 case "$TERM" in
     xterm-color|xterm-256color)
@@ -148,7 +158,7 @@ else
 fi
 
 # ---------------------------------------
-# => Color Aliases and Environment Variables
+# -> Color Aliases and Environment Variables
 # ---------------------------------------
 if [ "$color_prompt" = yes ]; then
     # ls
@@ -167,11 +177,11 @@ if [ "$color_prompt" = yes ]; then
 fi
 
 # ------------------------------------------------------------------------------
-# PS1
+# => PS1
 # ------------------------------------------------------------------------------
 
 # ---------------------------------------
-# => PS1 Colors
+# -> PS1 Colors
 # ---------------------------------------
 
 if [ "$color_prompt" = yes ]; then
@@ -182,7 +192,7 @@ fi
 unset color_prompt force_color_prompt
 
 # ---------------------------------------
-# => XTerm Window Title
+# -> XTerm Window Title
 # ---------------------------------------
 
 case "$TERM" in
@@ -194,7 +204,7 @@ case "$TERM" in
 esac
 
 # ------------------------------------------------------------------------------
-# Shorthand Functions
+# => Shorthand Functions
 # ------------------------------------------------------------------------------
 
 # cd into a directory and list its contents
