@@ -178,6 +178,10 @@ if [ "$color_prompt" = yes ]; then
     if [[ "$(command -v colordiff)" ]]; then
         alias diff=colordiff
     fi
+    # If tree command exists, alias tree -C
+    if [[ "$(command -v tree)" ]]; then
+        alias tree="tree -C"
+    fi
 fi
 
 # ------------------------------------------------------------------------------
