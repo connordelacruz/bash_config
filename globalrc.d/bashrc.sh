@@ -224,6 +224,13 @@ cdl() {
 #(redundant, but cdl is a more informative function name and c is easier to type)
 alias c='cdl'
 
+# Create a directory and cd into it
+mkcd () {
+  mkdir "$1"
+  cd "$1"
+}
+
+
 # Print todo/fixme comments in the specified directory
 todo() {
     # If no args are provided, call from current directory
