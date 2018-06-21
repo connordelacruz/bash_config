@@ -232,6 +232,15 @@ mkcd () {
   cd "$1"
 }
 
+# Use ls if $1 is a directory or less if it's a file (or something else)
+le () {
+    if [ -d "$1" ]; then
+        l "$1";
+    else
+        less "$1";
+    fi
+}
+
 
 # Print todo/fixme comments in the specified directory
 todo() {
