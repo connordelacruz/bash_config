@@ -246,6 +246,6 @@ le () {
 todo() {
     # If no args are provided, call from current directory
     proj_dir="${1:-.}";
-    grep -REIin --exclude-dir={.git,.idea} "TODO|FIXME" $proj_dir;
+    grep -REIino --exclude-dir={.git,.idea} "(TODO|FIXME).*" $proj_dir;
 }
 
