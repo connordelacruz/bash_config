@@ -14,6 +14,7 @@ git pull --rebase
 echo 'Updating submodules...'
 git submodule update --init --recursive
 
+# TODO: remove
 # Copy old local config contents to localrc.d/
 if [ -d ~/.bash_config/src_local ]; then
     echo 'Moving contents of src_local/ to localrc.d/ ...'
