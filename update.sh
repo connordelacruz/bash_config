@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # TODO: Add --help argument
 # TODO: Add --clean argument (run git clean -dff)

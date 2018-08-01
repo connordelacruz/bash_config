@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Call update scripts in personal repos (if they exist)
 
 # Older versions of git don't have the -C option

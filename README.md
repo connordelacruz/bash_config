@@ -12,7 +12,7 @@ Clone repo as ~/.bash_config and run install script:
 
 ```
 git clone https://github.com/connordelacruz/bash_config.git ~/.bash_config
-sh ~/.bash_config/install.sh
+~/.bash_config/install.sh
 ```
 
 
@@ -22,7 +22,7 @@ To pull changes from the remote repository and initialize any new submodules,
 run:
 
 ```
-sh ~/.bash_config/update.sh
+~/.bash_config/update.sh
 ```
 
 If you're using my [vim runtime
@@ -30,7 +30,7 @@ repo](https://github.com/connordelacruz/vim_runtime) (or a fork of it), you can
 run the following script to update it as well:
 
 ```
-sh ~/.bash_config/update_all.sh
+~/.bash_config/update_all.sh
 ```
 
 
