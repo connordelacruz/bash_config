@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+# ==============================================================================
+# install.sh
+#
+# Backs up existing .bashrc, creates a new one that uses configurations from
+# this repo, and installs any git submodules.
+#
+# Author: Connor de la Cruz
+# Repo: https://github.com/connordelacruz/bash_config
+# ==============================================================================
+
 set -e
 
 echo 'Installing bash config...'

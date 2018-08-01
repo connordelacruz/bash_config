@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
-# Call update scripts in personal repos (if they exist)
+# ==============================================================================
+# update_all.sh
+#
+# Call update scripts in personal repos (if they exist).
+#
+# Author: Connor de la Cruz
+# Repo: https://github.com/connordelacruz/bash_config
+# ==============================================================================
 
 # Older versions of git don't have the -C option
 current_dir="$(pwd)"
-
 
 # vim_runtime
 if [ -f ~/.vim_runtime/update.sh ]; then

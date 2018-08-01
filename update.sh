@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+# ==============================================================================
+# update.sh
+#
+# Pulls updates from remote repo and initializes any new submodules.
+#
+# Author: Connor de la Cruz
+# Repo: https://github.com/connordelacruz/bash_config
+# ==============================================================================
 
 # TODO: Add --help argument
 # TODO: Add --clean argument (run git clean -dff)
@@ -13,15 +21,6 @@ git pull --rebase
 
 echo 'Updating submodules...'
 git submodule update --init --recursive
-
-# TODO: remove
-# Copy old local config contents to localrc.d/
-if [ -d ~/.bash_config/src_local ]; then
-    echo 'Moving contents of src_local/ to localrc.d/ ...'
-    mv ~/.bash_config/src_local/* ~/.bash_config/localrc.d/.
-    rmdir ~/.bash_config/src_local
-    echo 'Local configs moved.'
-fi
 
 cd "$current_dir"
 unset current_dir
