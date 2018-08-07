@@ -246,6 +246,8 @@ le () {
 todo() {
     # If no args are provided, call from current directory
     proj_dir="${1:-.}";
-    grep -REIino --exclude-dir={.git,.idea} "(TODO|FIXME).*" $proj_dir;
+    # Set max characters to print per line
+    N=80;
+    grep -RPIino --exclude-dir={.git,.idea,node_modules} "(TODO|FIXME).{0,$N}" $proj_dir;
 }
 

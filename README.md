@@ -6,6 +6,11 @@ terminal emulators, while allowing for additional configurations and overrides
 specific to each environment.
 
 
+## TODO:
+
+* Add a section detailing functions/aliases
+
+
 ## Installation
 
 Clone repo as ~/.bash_config and run install script:
