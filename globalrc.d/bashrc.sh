@@ -194,6 +194,8 @@ fi
 # -> PS1 Colors
 # ---------------------------------------
 
+# TODO: integrate powerline.sh
+# . "$SRC_GLOBAL_PATH/powerline.sh"
 if [ "$color_prompt" = yes ]; then
     export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
 else
