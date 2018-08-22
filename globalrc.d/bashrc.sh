@@ -182,7 +182,7 @@ if [ "$color_prompt" = yes ]; then
     fi
     # If tree command exists, alias tree -C
     if [[ "$(command -v tree)" ]]; then
-        alias tree="tree -C"
+        alias tree="tree -CF"
     fi
 fi
 
