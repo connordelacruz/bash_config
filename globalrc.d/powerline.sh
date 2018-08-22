@@ -19,11 +19,11 @@ __powerline() {
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
     readonly COLOR_SYMBOL='\[\033[02;37m\]'
 
+    # Symbols
     readonly SYMBOL_GIT_BRANCH=''
     readonly SYMBOL_GIT_MODIFIED='*'
     readonly SYMBOL_GIT_PUSH='↑'
     readonly SYMBOL_GIT_PULL='↓'
-
     PS_SYMBOL='$'
 
     # if [[ -z "$PS_SYMBOL" ]]; then
@@ -33,6 +33,16 @@ __powerline() {
     #       *)        PS_SYMBOL='%';;
     #   esac
     # fi
+
+    # XTerm Window Title
+
+    case "$TERM" in
+        xterm*|rxvt*)
+            PREFIX="\[\e]0;\u@\h: \w\a\]";;
+        *)
+            PREFIX='';;
+    esac
+
 
     __git_info() {
         [[ $POWERLINE_GIT = 0 ]] && return # disabled
@@ -100,7 +110,7 @@ __powerline() {
         # TODO: reorganize/document
         local user="\[\033[01;36m\]\u\[\033[00m\] "
 
-        PS1="$user$cwd$git\n$symbol"
+        PS1="$PREFIX$user$cwd$git\n$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
