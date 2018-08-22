@@ -6,14 +6,18 @@
 
 ## Uncomment to disable git info
 #POWERLINE_GIT=0
+## TODO: doc
+SYMBOL_EXIT_CODE_COLOR=0
 
 __powerline() {
     # Colorscheme
+    # TODO: add colors for user
     readonly RESET='\[\033[m\]'
     readonly COLOR_CWD='\[\033[0;34m\]' # blue
     readonly COLOR_GIT='\[\033[0;35m\]' # magenta
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
+    readonly COLOR_SYMBOL='\[\033[02;37m\]'
 
     readonly SYMBOL_GIT_BRANCH=''
     readonly SYMBOL_GIT_MODIFIED='*'
@@ -68,10 +72,15 @@ __powerline() {
     ps1() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
-        if [ $? -eq 0 ]; then
-            local symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
+        # TODO: make optional?
+        if [ $SYMBOL_EXIT_CODE_COLOR -ne 0 ]; then
+            if [ $? -eq 0 ]; then
+                local symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
+            else
+                local symbol="$COLOR_FAILURE$PS_SYMBOL $RESET"
+            fi
         else
-            local symbol="$COLOR_FAILURE$PS_SYMBOL $RESET"
+            local symbol="$COLOR_SYMBOL$PS_SYMBOL $RESET"
         fi
 
         local cwd="$COLOR_CWD\w$RESET"
@@ -89,7 +98,7 @@ __powerline() {
         fi
 
         # TODO: reorganize/document
-        local user="\[\033[01;36m\]\u@\h\[\033[00m\] "
+        local user="\[\033[01;36m\]\u\[\033[00m\] "
 
         PS1="$user$cwd$git\n$symbol"
     }
