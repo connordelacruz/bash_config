@@ -6,7 +6,7 @@
 
 ## Uncomment to disable git info
 #POWERLINE_GIT=0
-## TODO: doc
+## Set to 1 to enable success/failure symbol color changes
 SYMBOL_EXIT_CODE_COLOR=0
 
 __powerline() {
