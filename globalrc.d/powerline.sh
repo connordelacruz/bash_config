@@ -11,7 +11,7 @@ __powerline() {
     # Colorscheme
     readonly RESET='\[\033[m\]'
     readonly COLOR_CWD='\[\033[0;34m\]' # blue
-    readonly COLOR_GIT='\[\033[0;36m\]' # cyan
+    readonly COLOR_GIT='\[\033[0;35m\]' # magenta
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
 
@@ -69,9 +69,9 @@ __powerline() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
-            local symbol="$COLOR_SUCCESS $PS_SYMBOL $RESET"
+            local symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
         else
-            local symbol="$COLOR_FAILURE $PS_SYMBOL $RESET"
+            local symbol="$COLOR_FAILURE$PS_SYMBOL $RESET"
         fi
 
         local cwd="$COLOR_CWD\w$RESET"
@@ -88,7 +88,10 @@ __powerline() {
             local git="$COLOR_GIT$(__git_info)$RESET"
         fi
 
-        PS1="$cwd$git$symbol"
+        # TODO: reorganize/document
+        local user="\[\033[01;36m\]\u@\h\[\033[00m\] "
+
+        PS1="$user$cwd$git\n$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
