@@ -191,30 +191,39 @@ fi
 # ------------------------------------------------------------------------------
 
 # ---------------------------------------
-# -> PS1 Colors
+# -> Powerline
 # ---------------------------------------
-
-# TODO: Make this locally configurable
 if [ -f "$SRC_GLOBAL_PATH/powerline.sh" ]; then
     . "$SRC_GLOBAL_PATH/powerline.sh"
-elif [ "$color_prompt" = yes ]; then
-    export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
+
+# ---------------------------------------
+# -> Standard PS1
+# ---------------------------------------
 else
-    PS1='\u@\h:\w\$ '
+    # ----------------
+    # Color Prompt
+    # ----------------
+
+    if [ "$color_prompt" = yes ]; then
+        # TODO: use configurable variables for ANSI colors
+        export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
+    else
+        PS1='\u@\h:\w\$ '
+    fi
+
+    # ----------------
+    # XTerm Window Title
+    # ----------------
+
+    case "$TERM" in
+        xterm*|rxvt*)
+            PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+            ;;
+        *)
+            ;;
+    esac
 fi
 unset color_prompt force_color_prompt
-
-# ---------------------------------------
-# -> XTerm Window Title
-# ---------------------------------------
-
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-esac
 
 # ------------------------------------------------------------------------------
 # => Shorthand Functions

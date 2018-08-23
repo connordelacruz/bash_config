@@ -4,17 +4,24 @@
 # Based on:
 #   https://github.com/riobard/bash-powerline
 
+
+# Feature Config
+# ---------------------------------------
+
 ## Uncomment to disable git info
 #POWERLINE_GIT=0
 ## Set to 1 to enable success/failure symbol color changes
 POWERLINE_EXIT_CODE_COLOR=0
 ## Set to 1 to show user in powerline
 POWERLINE_SHOW_USER=0
+# If set, use this symbol instead of determining one based on OS
+PS_SYMBOL='$'
+
 
 __powerline() {
     # Colorscheme
-    # TODO: add colors for user
     readonly RESET='\[\033[m\]'
+    readonly COLOR_USER='\[\033[01;36m\]' # cyan (bold)
     readonly COLOR_CWD='\[\033[0;34m\]' # blue
     readonly COLOR_GIT='\[\033[0;35m\]' # magenta
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
@@ -26,15 +33,14 @@ __powerline() {
     readonly SYMBOL_GIT_MODIFIED='*'
     readonly SYMBOL_GIT_PUSH='↑'
     readonly SYMBOL_GIT_PULL='↓'
-    PS_SYMBOL='$'
 
-    # if [[ -z "$PS_SYMBOL" ]]; then
-    #   case "$(uname)" in
-    #       Darwin)   PS_SYMBOL='';;
-    #       Linux)    PS_SYMBOL='$';;
-    #       *)        PS_SYMBOL='%';;
-    #   esac
-    # fi
+    if [[ -z "$PS_SYMBOL" ]]; then
+      case "$(uname)" in
+          Darwin)   PS_SYMBOL='';;
+          Linux)    PS_SYMBOL='$';;
+          *)        PS_SYMBOL='%';;
+      esac
+    fi
 
     # XTerm Window Title
 
@@ -84,7 +90,6 @@ __powerline() {
     ps1() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
-        # TODO: make optional?
         if [ $POWERLINE_EXIT_CODE_COLOR -ne 0 ]; then
             if [ $? -eq 0 ]; then
                 local symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
@@ -109,9 +114,8 @@ __powerline() {
             local git="$COLOR_GIT$(__git_info)$RESET"
         fi
 
-        # TODO: reorganize/document
         if [ $POWERLINE_SHOW_USER -ne 0 ]; then
-            local user="\[\033[01;36m\]\u\[\033[00m\] "
+            local user="$COLOR_USER\u$RESET "
         else
             local user=
         fi
