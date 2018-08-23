@@ -7,7 +7,9 @@
 ## Uncomment to disable git info
 #POWERLINE_GIT=0
 ## Set to 1 to enable success/failure symbol color changes
-SYMBOL_EXIT_CODE_COLOR=0
+POWERLINE_EXIT_CODE_COLOR=0
+## Set to 1 to show user in powerline
+POWERLINE_SHOW_USER=0
 
 __powerline() {
     # Colorscheme
@@ -83,7 +85,7 @@ __powerline() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
         # TODO: make optional?
-        if [ $SYMBOL_EXIT_CODE_COLOR -ne 0 ]; then
+        if [ $POWERLINE_EXIT_CODE_COLOR -ne 0 ]; then
             if [ $? -eq 0 ]; then
                 local symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
             else
@@ -108,7 +110,11 @@ __powerline() {
         fi
 
         # TODO: reorganize/document
-        local user="\[\033[01;36m\]\u\[\033[00m\] "
+        if [ $POWERLINE_SHOW_USER -ne 0 ]; then
+            local user="\[\033[01;36m\]\u\[\033[00m\] "
+        else
+            local user=
+        fi
 
         PS1="$PREFIX$user$cwd$git\n$symbol"
     }
