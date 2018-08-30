@@ -263,3 +263,14 @@ todo() {
     grep -RPIino --exclude-dir={.git,.idea,node_modules} "(TODO|FIXME).{0,$N}" $proj_dir;
 }
 
+
+# Show todo/fixme comments in less
+# TODO: remove redundant components
+todo-less() {
+    # If no args are provided, call from current directory
+    proj_dir="${1:-.}";
+    # Set max characters to print per line
+    N=80;
+    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=always "(TODO|FIXME).{0,$N}" $proj_dir | less -R;
+}
+
