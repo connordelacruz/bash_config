@@ -8,6 +8,7 @@ specific to each environment.
 
 ## TODO:
 
+* Info on powerline
 * Add a localrc.d file that gets loaded prior to globalrc.d where you can
   enable/disable things before running global stuff
 * Add a section detailing functions/aliases
