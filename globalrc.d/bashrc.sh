@@ -212,31 +212,6 @@ if [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
 elif [ -f "$SRC_GLOBAL_PATH/prompt/ps1.sh" ]; then
     . "$SRC_GLOBAL_PATH/prompt/ps1.sh"
 fi
-
-# TODO: remove
-# else
-#     # ----------------
-#     # Color Prompt
-#     # ----------------
-
-#     if [ "$color_prompt" = yes ]; then
-#         export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
-#     else
-#         PS1='\u@\h:\w\$ '
-#     fi
-
-#     # ----------------
-#     # XTerm Window Title
-#     # ----------------
-
-#     case "$TERM" in
-#         xterm*|rxvt*)
-#             PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-#             ;;
-#         *)
-#             ;;
-#     esac
-# fi
 unset color_prompt force_color_prompt
 
 # ------------------------------------------------------------------------------
@@ -253,13 +228,13 @@ cdl() {
 alias c='cdl'
 
 # Create a directory and cd into it
-mkcd () {
+mkcd() {
   mkdir "$1"
   cd "$1"
 }
 
 # Use ls if $1 is a directory or less if it's a file (or something else)
-le () {
+le() {
     if [ -d "$1" ]; then
         l "$1";
     else

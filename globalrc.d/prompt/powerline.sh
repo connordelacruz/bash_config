@@ -7,15 +7,16 @@
 
 # Feature Config
 # ---------------------------------------
+# TODO: remove, handled in init.sh
 
-## Uncomment to disable git info
-#POWERLINE_GIT=0
-## Set to 1 to enable success/failure symbol color changes
+# Set to 1 to enable git info
+POWERLINE_GIT=1
+# Set to 1 to enable success/failure symbol color changes
 POWERLINE_EXIT_CODE_COLOR=0
-## Set to 1 to show user in powerline
+# Set to 1 to show user in powerline
 POWERLINE_SHOW_USER=0
 # If set, use this symbol instead of determining one based on OS
-PS_SYMBOL='$'
+PS_SYMBOL='\$'
 
 
 __powerline() {

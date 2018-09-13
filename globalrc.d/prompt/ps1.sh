@@ -7,7 +7,7 @@
 # Color Prompt
 # ----------------
 
-PS_SYMBOL='$'
+PS_SYMBOL='\$'
 
 __ps1() {
     # TODO: configure these in a centralized location so powerline can use same values?
@@ -28,7 +28,6 @@ __ps1() {
 
     ps1() {
         if [ "$color_prompt" = yes ]; then
-            # TODO: use configurable variables for ANSI colors
             local user="$COLOR_USER\u@\h$RESET "
             local cwd="$COLOR_CWD\w$RESET"
             local symbol="\n$COLOR_SYMBOL$PS_SYMBOL $RESET"
