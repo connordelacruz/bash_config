@@ -206,35 +206,37 @@ fi
 # ---------------------------------------
 if [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
     . "$SRC_GLOBAL_PATH/prompt/powerline.sh"
-
 # ---------------------------------------
 # -> Standard PS1
 # ---------------------------------------
-# TODO: move to prompt/standard.sh
-else
-    # ----------------
-    # Color Prompt
-    # ----------------
-
-    if [ "$color_prompt" = yes ]; then
-        # TODO: use configurable variables for ANSI colors
-        export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
-    else
-        PS1='\u@\h:\w\$ '
-    fi
-
-    # ----------------
-    # XTerm Window Title
-    # ----------------
-
-    case "$TERM" in
-        xterm*|rxvt*)
-            PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-            ;;
-        *)
-            ;;
-    esac
+elif [ -f "$SRC_GLOBAL_PATH/prompt/ps1.sh" ]; then
+    . "$SRC_GLOBAL_PATH/prompt/ps1.sh"
 fi
+
+# TODO: remove
+# else
+#     # ----------------
+#     # Color Prompt
+#     # ----------------
+
+#     if [ "$color_prompt" = yes ]; then
+#         export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
+#     else
+#         PS1='\u@\h:\w\$ '
+#     fi
+
+#     # ----------------
+#     # XTerm Window Title
+#     # ----------------
+
+#     case "$TERM" in
+#         xterm*|rxvt*)
+#             PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+#             ;;
+#         *)
+#             ;;
+#     esac
+# fi
 unset color_prompt force_color_prompt
 
 # ------------------------------------------------------------------------------
