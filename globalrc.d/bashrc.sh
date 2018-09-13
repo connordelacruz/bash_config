@@ -204,12 +204,13 @@ fi
 # ---------------------------------------
 # -> Powerline
 # ---------------------------------------
-if [ -f "$SRC_GLOBAL_PATH/powerline.sh" ]; then
-    . "$SRC_GLOBAL_PATH/powerline.sh"
+if [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
+    . "$SRC_GLOBAL_PATH/prompt/powerline.sh"
 
 # ---------------------------------------
 # -> Standard PS1
 # ---------------------------------------
+# TODO: move to prompt/standard.sh
 else
     # ----------------
     # Color Prompt
