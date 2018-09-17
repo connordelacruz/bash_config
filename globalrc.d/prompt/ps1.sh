@@ -3,11 +3,10 @@
 # TODO: re-work to mirror powerline.sh setup
 
 
-# ----------------
-# Color Prompt
+# Feature Config
 # ----------------
 
-PS_SYMBOL='\$'
+# PS_SYMBOL='\$'
 
 __ps1() {
     # TODO: configure these in a centralized location so powerline can use same values?

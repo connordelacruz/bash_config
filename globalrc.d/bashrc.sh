@@ -201,17 +201,10 @@ fi
 # => PS1
 # ------------------------------------------------------------------------------
 
-# ---------------------------------------
-# -> Powerline
-# ---------------------------------------
-if [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
-    . "$SRC_GLOBAL_PATH/prompt/powerline.sh"
-# ---------------------------------------
-# -> Standard PS1
-# ---------------------------------------
-elif [ -f "$SRC_GLOBAL_PATH/prompt/ps1.sh" ]; then
-    . "$SRC_GLOBAL_PATH/prompt/ps1.sh"
+if [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ]; then
+    . "$SRC_GLOBAL_PATH/prompt/init.sh"
 fi
+
 unset color_prompt force_color_prompt
 
 # ------------------------------------------------------------------------------

@@ -28,7 +28,7 @@ POWERLINE_EXIT_CODE_COLOR=0
 POWERLINE_SHOW_USER=0
 
 
-if [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
+if [ $POWERLINE_ENABLE -gt 0 ] && [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
     . "$SRC_GLOBAL_PATH/prompt/powerline.sh"
 elif [ -f "$SRC_GLOBAL_PATH/prompt/ps1.sh" ]; then
     . "$SRC_GLOBAL_PATH/prompt/ps1.sh"
