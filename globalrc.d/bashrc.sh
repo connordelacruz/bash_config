@@ -201,6 +201,7 @@ fi
 # => PS1
 # ------------------------------------------------------------------------------
 
+# Source prompt/init.sh, which has PS1/Powerline configs
 if [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ]; then
     . "$SRC_GLOBAL_PATH/prompt/init.sh"
 fi

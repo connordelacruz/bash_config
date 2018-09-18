@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-# TODO: document and implement
+# ==============================================================================
+# PS1 Configuration
+# ==============================================================================
 
 # ---------------------------------------
 # Configurations
@@ -27,6 +28,9 @@ POWERLINE_EXIT_CODE_COLOR=0
 # Set to 1 to show user in powerline
 POWERLINE_SHOW_USER=0
 
+# ---------------------------------------
+# Source PS1/Powerline
+# ---------------------------------------
 
 if [ $POWERLINE_ENABLE -gt 0 ] && [ -f "$SRC_GLOBAL_PATH/prompt/powerline.sh" ]; then
     . "$SRC_GLOBAL_PATH/prompt/powerline.sh"
