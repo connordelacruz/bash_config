@@ -102,6 +102,17 @@ alias md='mkdir'
 alias cls='clear'
 
 # ------------------------------------------------------------------------------
+# => Optional Packages
+# ------------------------------------------------------------------------------
+
+# ---------------------------------------
+# -> fzf
+# ---------------------------------------
+
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ------------------------------------------------------------------------------
 # => Color Prompt
 # ------------------------------------------------------------------------------
 
@@ -190,28 +201,12 @@ fi
 # => PS1
 # ------------------------------------------------------------------------------
 
-# ---------------------------------------
-# -> PS1 Colors
-# ---------------------------------------
-
-if [ "$color_prompt" = yes ]; then
-    export PS1="\[\033[01;36m\]\u@\h\[\033[00m\] \[\033[00;34m\]\w\[\033[02;37m\]\n\$ \[\033[00m\]"
-else
-    PS1='\u@\h:\w\$ '
+# Source prompt/init.sh, which has PS1/Powerline configs
+if [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ]; then
+    . "$SRC_GLOBAL_PATH/prompt/init.sh"
 fi
+
 unset color_prompt force_color_prompt
-
-# ---------------------------------------
-# -> XTerm Window Title
-# ---------------------------------------
-
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-esac
 
 # ------------------------------------------------------------------------------
 # => Shorthand Functions
@@ -227,13 +222,13 @@ cdl() {
 alias c='cdl'
 
 # Create a directory and cd into it
-mkcd () {
+mkcd() {
   mkdir "$1"
   cd "$1"
 }
 
 # Use ls if $1 is a directory or less if it's a file (or something else)
-le () {
+le() {
     if [ -d "$1" ]; then
         l "$1";
     else
@@ -249,5 +244,16 @@ todo() {
     # Set max characters to print per line
     N=80;
     grep -RPIino --exclude-dir={.git,.idea,node_modules} "(TODO|FIXME).{0,$N}" $proj_dir;
+}
+
+
+# Show todo/fixme comments in less
+# TODO: remove redundant components
+todo-less() {
+    # If no args are provided, call from current directory
+    proj_dir="${1:-.}";
+    # Set max characters to print per line
+    N=80;
+    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=always "(TODO|FIXME).{0,$N}" $proj_dir | less -R;
 }
 
