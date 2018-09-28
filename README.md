@@ -46,19 +46,45 @@ run the following script to update it as well:
 
 ## Submodules
 
-[base16-shell](https://github.com/chriskempson/base16-shell) is included as a
+### Included Modules
+
+- [base16-shell](https://github.com/chriskempson/base16-shell) is included as a
 submodule for quickly setting the terminal colorscheme.
+- [iterm2-tab-color](https://github.com/connordelacruz/iterm2-tab-color)
+  adds functions for setting the tab color in iTerm2.
+
+
+### Enabling/Disabling Modules
+
+Enabled submodules can be configured in `modules/config.sh`. To
+disable a submodule, set the corresponding variable to `0`. E.g. if you wanted
+to disable iterm2-tab-color:
+
+`modules/config.sh`:
+
+```bash
+ENABLE_IT2_TAB_COLOR=0
+```
 
 
 ## Directory Structure
 
 - `install.sh` - Backs up the existing `~/.bashrc` (if one exists) and creates a
   one-line `.bashrc` that sources `~/.bash_config/init.sh`
+- `update.sh` - Pulls updates to main repo and submodules
 - `init.sh` - Sources `globalrc.d/init.sh` and `localrc.d/init.sh`
 - `globalrc.d/` - Shared runtime configuration files  
     - `init.sh` - Sources all bash configuration files in directory
     - `bashrc.sh` - Bash runtime configurations
     - `inputrc` - Input configurations
+    - `functions.sh` - Declarations of bash functions
+    - `prompt/` - Configurations for PS1 prompt
+        - `init.sh` - Configuration variables for PS1/powerline prompts and
+          sources one of the following scripts
+        - `powerline.sh` - If `POWERLINE_ENABLE` is set to `1`, this file will
+          be sourced to set the PS1 prompt to a modified version of powerline
+        - `ps1.sh` - If `POWERLINE_ENABLE` is set to `0`, this file will
+          be sourced to set the PS1 prompt to a vanilla PS1
 - `localrc.d/` - Additional configurations specific to the machine. These are
   ignored by git.  
     - `init.sh` - Looks for any of the following files in `localrc.d/` and
@@ -70,5 +96,9 @@ submodule for quickly setting the terminal colorscheme.
         - `aliases.sh`  
         - `functions.sh`
 - `modules/` - git submodules  
-  - [`base16-shell`](https://github.com/chriskempson/base16-shell)
+    - `config.sh` - Configurations for enabled/disabled submodules
+    - `init.sh` - Sources `config.sh` and all enabled modules
+    - [`base16-shell`](https://github.com/chriskempson/base16-shell)
+    - [`iterm2-tab-color`](https://github.com/connordelacruz/iterm2-tab-color)
+
 
