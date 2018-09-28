@@ -1,5 +1,6 @@
-# TODO: document and implement
-
+# ================================================================
+# Functions
+# ================================================================
 
 # cd into a directory and list its contents
 cdl() {

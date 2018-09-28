@@ -10,8 +10,9 @@ specific to each environment.
 
 * Info on powerline
 * Add a localrc.d file that gets loaded prior to globalrc.d where you can
-  enable/disable things before running global stuff
+  enable/disable things before running global stuff?
 * Add a section detailing functions/aliases
+* Update directory structure, it's out of date
 * Update info on modules, configs
 
 

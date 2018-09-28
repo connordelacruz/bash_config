@@ -8,3 +8,6 @@
 # bashrc
 [ -f "$SRC_GLOBAL_PATH/bashrc.sh" ] && . "$SRC_GLOBAL_PATH/bashrc.sh"
 
+# functions
+[ -f "$SRC_GLOBAL_PATH/functions.sh" ] && . "$SRC_GLOBAL_PATH/functions.sh"
+
