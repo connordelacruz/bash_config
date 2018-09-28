@@ -9,10 +9,7 @@ specific to each environment.
 ## TODO:
 
 * Info on powerline
-* Add a localrc.d file that gets loaded prior to globalrc.d where you can
-  enable/disable things before running global stuff?
-* Add a section detailing functions/aliases
-* Update directory structure, it's out of date
+* Add a section detailing aliases?
 * Update info on modules, configs
 
 
@@ -46,6 +43,9 @@ run the following script to update it as well:
 
 ## Submodules
 
+This repo includes a few useful submodules. These are stored in the `modules/`
+directory.
+
 ### Included Modules
 
 - [base16-shell](https://github.com/chriskempson/base16-shell) is included as a
@@ -65,6 +65,46 @@ to disable iterm2-tab-color:
 ```bash
 ENABLE_IT2_TAB_COLOR=0
 ```
+
+
+## PS1 Prompt
+
+**TODO:** document PS1/powerline config details
+
+
+## Functions
+
+The following convenience functions are included from `globalrc.d/functions.sh`.
+
+`todo` - Recursively searches files for `TODO` or `FIXME` comments using grep
+and prints them out. Optionally takes a positional argument for the directory to
+search. If no arguments are specified, it will search the current directory.
+
+
+`todo-less` - Like `todo` but pipes output into `less` to keep terminal history
+less cluttered.
+
+
+`cdl` (alias: `c`) - Shorthand function that changes into a directory and lists
+its contents. Equivalent to:
+
+```bash
+cd <directory>
+l
+```
+
+
+`mkcd` - Shorthand function that creates a directory and changes into it.
+Equivalent to:
+
+```bash
+mkdir <directory>
+cd <directory>
+```
+
+
+`le` - If used on a file, will run `less <file>`. If used on a directory, will
+run `ls <directory>`.
 
 
 ## Directory Structure
