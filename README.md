@@ -8,7 +8,7 @@ specific to each environment.
 
 ## TODO:
 
-* Info on powerline
+* Info on [powerline](https://github.com/riobard/bash-powerline)
 * Add a section detailing aliases?
 * Update info on modules, configs
 
