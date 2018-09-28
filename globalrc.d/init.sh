@@ -2,12 +2,9 @@
 # Sources global configurations
 # ==============================================================================
 
+# inputrc
+[ -f "$SRC_GLOBAL_PATH/inputrc" ] && export INPUTRC="$SRC_GLOBAL_PATH/inputrc"
 
-if [ -f "$SRC_GLOBAL_PATH/inputrc" ]; then
-    export INPUTRC="$SRC_GLOBAL_PATH/inputrc"
-fi
-
-if [ -f "$SRC_GLOBAL_PATH/bashrc.sh" ]; then
-    . "$SRC_GLOBAL_PATH/bashrc.sh"
-fi
+# bashrc
+[ -f "$SRC_GLOBAL_PATH/bashrc.sh" ] && . "$SRC_GLOBAL_PATH/bashrc.sh"
 

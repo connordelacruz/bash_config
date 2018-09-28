@@ -117,14 +117,6 @@ alias cls='clear'
 # ------------------------------------------------------------------------------
 
 # ---------------------------------------
-# -> Base16 Shell
-# ---------------------------------------
-
-if [ -f "$MODULE_PATH/base16-shell/profile_helper.sh" ]; then
-    [ -n "$PS1" ] && [ -s $MODULE_PATH/base16-shell/profile_helper.sh ] && eval "$($MODULE_PATH/base16-shell/profile_helper.sh)"
-fi
-
-# ---------------------------------------
 # -> Platform-Specific Configs
 # NOTE: The COLORTERM=truecolor stuff is for use with our vim_runtime config
 # so it can appropriately set color space settings and select a colorscheme
@@ -202,15 +194,15 @@ fi
 # ------------------------------------------------------------------------------
 
 # Source prompt/init.sh, which has PS1/Powerline configs
-if [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ]; then
-    . "$SRC_GLOBAL_PATH/prompt/init.sh"
-fi
+# TODO: move to globalrc.d/init.sh?
+[ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ] && . "$SRC_GLOBAL_PATH/prompt/init.sh"
 
 unset color_prompt force_color_prompt
 
 # ------------------------------------------------------------------------------
 # => Shorthand Functions
 # ------------------------------------------------------------------------------
+# TODO: move to functions.sh
 
 # cd into a directory and list its contents
 cdl() {
