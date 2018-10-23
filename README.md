@@ -119,8 +119,8 @@ run `ls <directory>`.
     - `inputrc` - Input configurations
     - `functions.sh` - Declarations of bash functions
     - `prompt/` - Configurations for PS1 prompt
-        - `init.sh` - Configuration variables for PS1/powerline prompts and
-          sources one of the following scripts
+        - `config.sh` - Configuration variables for PS1/powerline prompts
+        - `init.sh` - Sources `config.sh` and one of the following scripts
         - `powerline.sh` - If `POWERLINE_ENABLE` is set to `1`, this file will
           be sourced to set the PS1 prompt to a modified version of powerline
         - `ps1.sh` - If `POWERLINE_ENABLE` is set to `0`, this file will
