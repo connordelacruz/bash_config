@@ -23,9 +23,7 @@
 
 # PATH
 local_bin="/usr/local/bin"
-
 export PATH="$local_bin:$PATH"
-
 unset local_bin
 
 # enable programmable completion features (you don't need to enable
@@ -43,7 +41,6 @@ fi
 shopt -s checkwinsize
 # Enable extended globbing
 shopt -s extglob
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -96,7 +93,6 @@ export EDITOR="$VISUAL"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
 alias cls='clear'
