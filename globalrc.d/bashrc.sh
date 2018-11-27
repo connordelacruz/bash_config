@@ -96,6 +96,11 @@ alias l='ls -CF'
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
 alias cls='clear'
+# MacOS aliases
+if [[ "$(uname -s)" == "Darwin"* ]]; then
+    # Copy previous command to clipboard
+    alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
+fi
 
 # ------------------------------------------------------------------------------
 # => Optional Packages
