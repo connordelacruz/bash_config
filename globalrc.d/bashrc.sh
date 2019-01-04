@@ -195,7 +195,6 @@ fi
 # ------------------------------------------------------------------------------
 
 # Source prompt/init.sh, which has PS1/Powerline configs
-# TODO: move to globalrc.d/init.sh? technically relies on variables set here so maybe not
 [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ] && . "$SRC_GLOBAL_PATH/prompt/init.sh"
 
 unset color_prompt force_color_prompt
