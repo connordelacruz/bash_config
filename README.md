@@ -6,13 +6,6 @@ terminal emulators, while allowing for additional configurations and overrides
 specific to each environment.
 
 
-## TODO:
-
-* Info on [powerline](https://github.com/riobard/bash-powerline)
-* Add a section detailing aliases?
-* Update info on modules, configs
-
-
 ## Installation
 
 Clone repo as ~/.bash_config and run install script:
@@ -54,7 +47,7 @@ submodule for quickly setting the terminal colorscheme.
   adds functions for setting the tab color in iTerm2.
 
 
-### Enabling/Disabling Modules
+### Enabling, Disabling, and Configuring Modules
 
 Enabled submodules can be configured in `modules/config.sh`. To
 disable a submodule, set the corresponding variable to `0`. E.g. if you wanted
@@ -66,10 +59,75 @@ to disable iterm2-tab-color:
 ENABLE_IT2_TAB_COLOR=0
 ```
 
+Some additional configurations can be found in
+[`modules/config.sh`](modules/config.sh). See comments for more information.
+
 
 ## PS1 Prompt
 
-**TODO:** document PS1/powerline config details
+Configurations for the PS1 prompt can be found in `globalrc.d/prompt/config.sh`.
+This repo uses [bash-powerline](https://github.com/riobard/bash-powerline) by
+default.
+
+If `POWERLINE_ENABLE` is set to `1`, `globalrc.d/prompt/powerline.sh` will be
+sourced to set the PS1 prompt to a modified version of
+[bash-powerline](https://github.com/riobard/bash-powerline) (this is the default
+configuration).
+
+If `POWERLINE_ENABLE` is set to `0`, `globalrc.d/prompt/ps1.sh` will be sourced
+to set the PS1 prompt to a vanilla PS1.
+
+See [`globalrc.d/prompt/config.sh`](globalrc.d/prompt/config.sh) for additional
+options.
+
+
+## Aliases
+
+The following aliases are declared in `globalrc.d/bashrc.sh`. Some of these will
+only be included depending on OS and what command line utilities are installed.
+
+
+`ls` aliases:
+
+```bash
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+```
+
+
+Color prompt aliases:
+
+```bash
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# If colordiff command exists, alias diff
+alias diff=colordiff
+
+# If tree command exists, alias tree -C
+alias tree="tree -CF"
+```
+
+
+MacOS aliases:
+
+```bash
+# Copy previous command to clipboard
+alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
+# MacOS doesn't have --color option (color prompt only)
+alias ls='ls --color=auto'
+```
+
+
+Misc aliases:
+
+```bash
+alias md='mkdir'
+alias cls='clear'
+```
 
 
 ## Functions
