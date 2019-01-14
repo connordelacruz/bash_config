@@ -8,10 +8,6 @@
 # Prompt symbol
 PS_SYMBOL='\$'
 
-# TODO: Colors
-# ----------------
-
-
 # Powerline
 # ----------------
 
