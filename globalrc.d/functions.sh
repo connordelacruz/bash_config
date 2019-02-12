@@ -27,6 +27,13 @@ le() {
 }
 
 
+# Show diff output in less
+
+diff-less() {
+    diff -u $1 $2 | less -r
+}
+
+
 # Print todo/fixme comments in the specified directory
 todo() {
     # If no args are provided, call from current directory
