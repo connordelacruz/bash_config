@@ -13,7 +13,7 @@ __ps1() {
     # XTerm Window Title
     case "$TERM" in
         xterm*|rxvt*)
-            PREFIX="\[\e]0;\u@\h: \w\a\]";;
+            PREFIX="$XTERM_WINDOW_TITLE";;
         *)
             PREFIX='';;
     esac

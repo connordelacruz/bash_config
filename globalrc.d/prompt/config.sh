@@ -7,6 +7,8 @@
 
 # Prompt symbol
 PS_SYMBOL='\$'
+# XTerm window title (for compatible terminals)
+XTERM_WINDOW_TITLE="\[\e]0;\w\a\]"
 
 # Powerline
 # ----------------
