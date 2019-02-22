@@ -93,9 +93,12 @@ export EDITOR="$VISUAL"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-# editor
+# Editor
 alias e="$EDITOR"
-alias :e="$EDITOR" # when you forget you're outside of vim
+alias :e="$EDITOR"
+# vim-specific
+alias sp="$EDITOR -o"
+alias vsp="$EDITOR -O"
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
 alias cls='clear'
