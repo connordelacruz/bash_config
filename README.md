@@ -200,3 +200,8 @@ run `ls <directory>`.
     - [`iterm2-tab-color`](https://github.com/connordelacruz/iterm2-tab-color)
 
 
+## TODO:
+
+- Ensure docs are up-to-date
+- Better variable scoping for configurations
+
