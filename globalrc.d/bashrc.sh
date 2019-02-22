@@ -97,8 +97,10 @@ alias l='ls -CF'
 alias e="$EDITOR"
 alias :e="$EDITOR"
 # vim-specific
-alias sp="$EDITOR -o"
-alias vsp="$EDITOR -O"
+if [[ "$EDITOR" == *"vi"* ]]; then
+    alias sp="$EDITOR -o"
+    alias vsp="$EDITOR -O"
+fi
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
 alias cls='clear'
