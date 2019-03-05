@@ -72,6 +72,16 @@ __powerline() {
         printf " $ref$marks"
     }
 
+
+    __virtualenv_info() {
+        # TODO: Make configurable
+        [[ $POWERLINE_VIRTUALENV = 0 ]] && return # disabled
+        # TODO: use [ -z "$VIRTUAL_ENV_DISABLE_PROMPT" ] && ?
+        if [ -n "$VIRTUAL_ENV" ]; then
+            printf "(`basename \"$VIRTUAL_ENV\"`) "
+        fi
+    }
+
     ps1() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
@@ -94,9 +104,14 @@ __powerline() {
         if shopt -q promptvars; then
             __powerline_git_info="$(__git_info)"
             local git="$COLOR_GIT\${__powerline_git_info}$RESET"
+            __powerline_virtualenv_info="$(__virtualenv_info)"
+            # TODO: COLOR_VIRTUALENV
+            local venv="$RESET\${__powerline_virtualenv_info}$RESET"
         else
-            # promptvars is disabled. Avoid creating unnecessary env var.
+            # promptvars is disabled. Avoid creating unnecessary env vars.
             local git="$COLOR_GIT$(__git_info)$RESET"
+            # TODO: COLOR_VIRTUALENV
+            local venv="$RESET$(__virtualenv_info)$RESET"
         fi
 
         if [ $POWERLINE_SHOW_USER -ne 0 ]; then
@@ -105,7 +120,7 @@ __powerline() {
             local user=
         fi
 
-        PS1="$PREFIX$user$cwd$git\n$symbol"
+        PS1="$PREFIX$venv$user$cwd$git\n$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
