@@ -10,6 +10,7 @@ __powerline() {
     readonly COLOR_USER='\[\033[01;36m\]' # cyan (bold)
     readonly COLOR_CWD='\[\033[0;34m\]' # blue
     readonly COLOR_GIT='\[\033[0;35m\]' # magenta
+    readonly COLOR_VIRTUALENV='\[\033[0;36m\]' # cyan
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
     readonly COLOR_SYMBOL='\[\033[02;37m\]'
@@ -74,9 +75,8 @@ __powerline() {
 
 
     __virtualenv_info() {
-        # TODO: Make configurable
+        # TODO: || [ -z "$VIRTUAL_ENV_DISABLE_PROMPT" ] ?
         [[ $POWERLINE_VIRTUALENV = 0 ]] && return # disabled
-        # TODO: use [ -z "$VIRTUAL_ENV_DISABLE_PROMPT" ] && ?
         if [ -n "$VIRTUAL_ENV" ]; then
             printf "(`basename \"$VIRTUAL_ENV\"`) "
         fi
@@ -105,13 +105,11 @@ __powerline() {
             __powerline_git_info="$(__git_info)"
             local git="$COLOR_GIT\${__powerline_git_info}$RESET"
             __powerline_virtualenv_info="$(__virtualenv_info)"
-            # TODO: COLOR_VIRTUALENV
-            local venv="$RESET\${__powerline_virtualenv_info}$RESET"
+            local venv="$COLOR_VIRTUALENV\${__powerline_virtualenv_info}$RESET"
         else
             # promptvars is disabled. Avoid creating unnecessary env vars.
             local git="$COLOR_GIT$(__git_info)$RESET"
-            # TODO: COLOR_VIRTUALENV
-            local venv="$RESET$(__virtualenv_info)$RESET"
+            local venv="$COLOR_VIRTUALENV$(__virtualenv_info)$RESET"
         fi
 
         if [ $POWERLINE_SHOW_USER -ne 0 ]; then
