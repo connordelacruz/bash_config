@@ -34,6 +34,12 @@ diff-less() {
 }
 
 
+# Show tree output in less
+tree-less() {
+tree $@ | less -r
+}
+
+
 # Print todo/fixme comments in the specified directory
 todo() {
     # If no args are provided, call from current directory
