@@ -13,7 +13,7 @@ alias c='cdl'
 
 # Create a directory and cd into it
 mkcd() {
-  mkdir "$1"
+  mkdir -p "$1"
   cd "$1"
 }
 
