@@ -40,6 +40,8 @@ tree $@ | less -r
 }
 
 
+# TODO: cleanup local vars in functions
+
 # Print todo/fixme comments in the specified directory
 todo() {
     # If no args are provided, call from current directory
@@ -59,4 +61,24 @@ todo-less() {
     N=80
     grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=always "(TODO|FIXME).{0,$N}" $proj_dir | less -R
 }
+
+
+# Delete all merged local git branches except master and develop.
+# Prompts for confirmation by default. The -y arg can be used to skip the prompt
+git-branch-cleanup() {
+    if [ $# > 0 ] && [ "$1" == "-y" ]; then
+        yn="y"
+    else
+        read -p "Delete all merged branches except master and develop? (y/[n]): " yn
+    fi
+    case $yn in
+        [yY]* )
+            git branch --no-color | grep -vE "master|develop" | xargs git branch -d
+            ;;
+        *)
+            ;;
+    esac
+    unset yn
+}
+
 
