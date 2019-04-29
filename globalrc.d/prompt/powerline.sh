@@ -6,14 +6,19 @@
 
 __powerline() {
     # Colorscheme
+    # General
     readonly RESET='\[\033[m\]'
+    # PS1 item colors
     readonly COLOR_USER='\[\033[01;36m\]' # cyan (bold)
     readonly COLOR_CWD='\[\033[0;34m\]' # blue
+    readonly COLOR_SYMBOL='\[\033[02;37m\]'
+    # Powerline function colors
     readonly COLOR_GIT='\[\033[0;35m\]' # magenta
     readonly COLOR_VIRTUALENV='\[\033[0;36m\]' # cyan
+    readonly COLOR_JOBS='\[\033[0;32m\]' # green
+    # Command exit code colors
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
-    readonly COLOR_SYMBOL='\[\033[02;37m\]'
 
     # Symbols
     readonly SYMBOL_GIT_BRANCH=''
@@ -82,6 +87,13 @@ __powerline() {
         fi
     }
 
+    __jobs_info() {
+        [[ $POWERLINE_JOBS = 0 ]] && return # disabled
+        local job_count="$(jobs -p | wc -l | tr -d " ")"
+        [[ $job_count = 0 ]] && return # No jobs
+        printf "(jobs: $job_count) "
+    }
+
     ps1() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
@@ -106,10 +118,13 @@ __powerline() {
             local git="$COLOR_GIT\${__powerline_git_info}$RESET"
             __powerline_virtualenv_info="$(__virtualenv_info)"
             local venv="$COLOR_VIRTUALENV\${__powerline_virtualenv_info}$RESET"
+            __powerline_jobs_info="$(__jobs_info)"
+            local venv="$COLOR_JOBS\${__powerline_jobs_info}$RESET"
         else
             # promptvars is disabled. Avoid creating unnecessary env vars.
             local git="$COLOR_GIT$(__git_info)$RESET"
             local venv="$COLOR_VIRTUALENV$(__virtualenv_info)$RESET"
+            local jobs="$COLOR_JOBS$(__jobs_info)$RESET"
         fi
 
         if [ $POWERLINE_SHOW_USER -ne 0 ]; then

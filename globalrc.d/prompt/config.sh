@@ -19,6 +19,8 @@ POWERLINE_ENABLE=1
 POWERLINE_GIT=1
 # Set to 1 to enable python virtualenv info
 POWERLINE_VIRTUALENV=1
+# Set to 1 to enable info on the number of background jobs running
+POWERLINE_JOBS=1
 # Set to 1 to enable success/failure symbol color changes
 POWERLINE_EXIT_CODE_COLOR=0
 # Set to 1 to show user in powerline
