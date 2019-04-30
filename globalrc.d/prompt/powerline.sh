@@ -119,7 +119,7 @@ __powerline() {
             __powerline_virtualenv_info="$(__virtualenv_info)"
             local venv="$COLOR_VIRTUALENV\${__powerline_virtualenv_info}$RESET"
             __powerline_jobs_info="$(__jobs_info)"
-            local venv="$COLOR_JOBS\${__powerline_jobs_info}$RESET"
+            local jobs="$COLOR_JOBS\${__powerline_jobs_info}$RESET"
         else
             # promptvars is disabled. Avoid creating unnecessary env vars.
             local git="$COLOR_GIT$(__git_info)$RESET"
@@ -133,7 +133,7 @@ __powerline() {
             local user=
         fi
 
-        PS1="$PREFIX$venv$user$cwd$git\n$symbol"
+        PS1="$PREFIX$jobs$venv$user$cwd$git\n$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
