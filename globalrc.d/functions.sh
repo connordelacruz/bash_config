@@ -66,7 +66,7 @@ todo-less() {
 # Delete all merged local git branches except master and develop.
 # Prompts for confirmation by default. The -y arg can be used to skip the prompt
 git-branch-cleanup() {
-    if [ $# > 0 ] && [ "$1" == "-y" ]; then
+    if [[ $# > 0 ]] && [[ "$1" == "-y" ]]; then
         yn="y"
     else
         read -p "Delete all merged branches except master and develop? (y/[n]): " yn
