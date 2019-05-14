@@ -36,7 +36,6 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
 # Update window size after each command
 shopt -s checkwinsize
 # Enable extended globbing
@@ -48,15 +47,14 @@ shopt -s extglob
 # -> History
 # ---------------------------------------
 
-# don't put duplicate lines or lines starting with space in the history
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
-
-# save multi-line commands as a single history entry
+# Save multi-line commands as a single history entry
 shopt -s cmdhist
-
+# Don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+# Record each line of history after issuing it
+PROMPT_COMMAND="history -a"
 # Set size of command history
 # If on version 4.3+, set to -1 for unlimited history
 # https://stackoverflow.com/questions/9457233/unlimited-bash-history
@@ -136,13 +134,11 @@ fi
 if [[ "$TERM_PROGRAM" == "iTerm.app" || "$TERM_PROGRAM" == "Hyper" ]]; then
     export COLORTERM=truecolor
 fi
-
 # Set 256 color and $COLORTERM to truecolor for mate-terminal
 if [[ "$COLORTERM" == "mate-terminal" ]]; then
     export TERM=xterm-256color
     export COLORTERM=truecolor
 fi
-
 # Set 256 color if this is an XFCE Terminal
 if [ "$COLORTERM" == "xfce4-terminal" ]; then
     export TERM=xterm-256color
@@ -159,12 +155,12 @@ fi
 # ---------------------------------------
 # -> Check Color Support
 # ---------------------------------------
+
 case "$TERM" in
     xterm-color|xterm-256color)
         color_prompt=yes
         ;;
 esac
-
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
     color_prompt=yes
 else
@@ -204,6 +200,5 @@ fi
 
 # Source prompt/init.sh, which has PS1/Powerline configs
 [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ] && . "$SRC_GLOBAL_PATH/prompt/init.sh"
-
 unset color_prompt force_color_prompt
 
