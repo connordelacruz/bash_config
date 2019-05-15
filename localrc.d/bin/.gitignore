@@ -1,7 +1,5 @@
 # Ignore everything in here since it's specific to the machine
-# (Excluding .gitignore and init.sh)
+# (Excluding .gitignore)
 *
 !.gitignore
-!init.sh
-!bin
 

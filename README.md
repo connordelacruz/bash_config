@@ -185,6 +185,8 @@ run `ls <directory>`.
           be sourced to set the PS1 prompt to a vanilla PS1
 - `localrc.d/` - Additional configurations specific to the machine. These are
   ignored by git.  
+    - `bin/` - Local directory added to `PATH`, add any scripts you want
+      accessible here
     - `init.sh` - Looks for any of the following files in `localrc.d/` and
       sources them if they exist:
         - `bashrc.sh`

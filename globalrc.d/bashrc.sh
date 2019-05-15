@@ -22,8 +22,9 @@
 # ---------------------------------------
 
 # PATH
-local_bin="/usr/local/bin"
-export PATH="$local_bin:$PATH"
+usr_local_bin="/usr/local/bin"
+localrc_bin="$SRC_LOCAL_PATH/bin"
+export PATH="$usr_local_bin:$localrc_bin:$PATH"
 unset local_bin
 
 # enable programmable completion features (you don't need to enable
@@ -36,6 +37,8 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+# Enable bash completion (MacOS)
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 # Update window size after each command
 shopt -s checkwinsize
 # Enable extended globbing
