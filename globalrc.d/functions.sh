@@ -81,4 +81,13 @@ git-branch-cleanup() {
     unset yn
 }
 
+# Print out a timestamp in the format yyyy-mm-dd
+# If the -v flag is used, print verbose timestamp yyyy-mm-dd-HH.MM.SS
+# Can be used to quickly print a timestamp to filenames e.g.:
+#   mv "$file" "$(ts)$file"
+ts() {
+    local fmt="+%Y-%m-%d"
+    [[ "$1" == "-v" ]] && fmt="$fmt-%H.%M.%S"
+    date "$fmt"
+}
 
