@@ -34,13 +34,31 @@ tree-less() {
 
 
 # Helper for todo functions. Usage:
-# _todo-grep <target dir> [<color always>] [<max characters>]
+# _todo-grep <target dir> [-c] [-n <max characters>]
 _todo-grep() {
-    # If arg 2 is > 0, use --color=always (default to auto)
-    local color_arg="auto" && [[ $2 > 0 ]] && color_arg="always"
-    # Set max characters to print per line
-    local N="${3:-80}"
-    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=$color_arg "(TODO|FIXME).{0,$N}" $@
+    local targets=
+    local color_arg="auto"
+    local N=80
+    # Get optional args
+    while [ "$1" != "" ]; do
+        case $1 in
+            -c)
+                color_arg="always"
+                ;;
+            -n)
+                # Get value following -n flag
+                # (Or fallback to default if no value was passed)
+                shift
+                N=${1:-$N}
+                ;;
+            *)
+                # Any other arg is a target dir
+                targets="$targets $1"
+                ;;
+        esac
+        shift
+    done
+    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=$color_arg "(TODO|FIXME).{0,$N}" $targets
 }
 
 
@@ -54,7 +72,7 @@ todo() {
 # Show todo/fixme comments in less
 todo-less() {
     # If no args are provided, call from current directory
-    _todo-grep "${@:-.}" 1 | less -R
+    _todo-grep "${@:-.}" -c | less -R
 }
 
 
