@@ -40,21 +40,21 @@ _todo-grep() {
     local color_arg="auto" && [[ $2 > 0 ]] && color_arg="always"
     # Set max characters to print per line
     local N="${3:-80}"
-    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=$color_arg "(TODO|FIXME).{0,$N}" $1
+    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=$color_arg "(TODO|FIXME).{0,$N}" $@
 }
 
 
-# Print todo/fixme comments in the specified directory
+# Print todo/fixme comments in the specified file/directory
 todo() {
     # If no args are provided, call from current directory
-    _todo-grep "${1:-.}"
+    _todo-grep "${@:-.}"
 }
 
 
 # Show todo/fixme comments in less
 todo-less() {
     # If no args are provided, call from current directory
-    _todo-grep "${1:-.}" 1 | less -R
+    _todo-grep "${@:-.}" 1 | less -R
 }
 
 
