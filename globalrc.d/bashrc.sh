@@ -112,6 +112,8 @@ if [[ "$(uname -s)" == "Darwin"* ]]; then
     # Copy previous command to clipboard
     alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
 fi
+# Quickly push a new branch to remote for the first time
+alias gpush-head='git push -u origin HEAD'
 
 # ------------------------------------------------------------------------------
 # => Optional Packages
