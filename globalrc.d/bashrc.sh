@@ -104,6 +104,8 @@ if [[ "$EDITOR" == *"vi"* ]]; then
     alias sp="$EDITOR -o"
     alias vsp="$EDITOR -O"
     alias tabe="$EDITOR -p"
+    # tab by default with e command
+    alias e="tabe"
 fi
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
