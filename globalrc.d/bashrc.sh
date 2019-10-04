@@ -88,6 +88,22 @@ fi
 # set EDITOR to match
 export EDITOR="$VISUAL"
 
+# General Editor Aliases
+alias e="$EDITOR"
+alias :e="$EDITOR"
+
+# Vim-specific Configs/aliases
+if [[ "$EDITOR" == *"vi"* ]]; then
+    # Use vim as man pager
+    export MANPAGER="$EDITOR -c MANPAGER -"
+    # Shorthand for opening multiple files in splits/tabs
+    alias sp="$EDITOR -o"
+    alias vsp="$EDITOR -O"
+    alias tabe="$EDITOR -p"
+    # tab by default with e command
+    alias e="tabe"
+fi
+
 # ------------------------------------------------------------------------------
 # => Aliases
 # ------------------------------------------------------------------------------
@@ -96,17 +112,6 @@ export EDITOR="$VISUAL"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-# Editor
-alias e="$EDITOR"
-alias :e="$EDITOR"
-# vim-specific
-if [[ "$EDITOR" == *"vi"* ]]; then
-    alias sp="$EDITOR -o"
-    alias vsp="$EDITOR -O"
-    alias tabe="$EDITOR -p"
-    # tab by default with e command
-    alias e="tabe"
-fi
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
 alias cls='clear'
