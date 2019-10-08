@@ -99,3 +99,14 @@ ts() {
     date "$fmt"
 }
 
+# Print out the date a file was last modified in the format yyyy-mm-dd
+# TODO support -v similar to ts
+ts-file() {
+    if [[ $# > 0 ]]; then
+        local fmt="+%Y-%m-%d"
+        date -r "$1" "$fmt"
+    else
+        echo "Usage: ts-file <filename>"
+    fi
+}
+
