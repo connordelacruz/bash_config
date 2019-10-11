@@ -115,13 +115,15 @@ alias l='ls -CF'
 # Bad habits developed during a Windows sysadmin internship
 alias md='mkdir'
 alias cls='clear'
+# Quickly push a new branch to remote for the first time
+alias gpush-head='git push -u origin HEAD'
 # MacOS aliases
 if [[ "$(uname -s)" == "Darwin"* ]]; then
     # Copy previous command to clipboard
     alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
+    # Clone a git repo using the clipboard contents as the URL
+    alias gclone-paste="git clone \$(pbpaste)"
 fi
-# Quickly push a new branch to remote for the first time
-alias gpush-head='git push -u origin HEAD'
 
 # ------------------------------------------------------------------------------
 # => Optional Packages
