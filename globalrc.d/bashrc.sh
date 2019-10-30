@@ -121,6 +121,8 @@ alias cls='clear'
 alias gpush-head='git push -u origin HEAD'
 # MacOS aliases
 if [[ "$(uname -s)" == "Darwin"* ]]; then
+    # Echo the contents of the clipboard
+    alias clipboard-contents="echo $(pbpaste)"
     # Copy previous command to clipboard
     alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
     # Clone a git repo using the clipboard contents as the URL
