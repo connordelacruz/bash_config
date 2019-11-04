@@ -128,6 +128,8 @@ if [[ "$(uname -s)" == "Darwin"* ]]; then
     # Clone a git repo using the clipboard contents as the URL
     alias gclone-paste="git clone \$(pbpaste)"
 fi
+# Iterm2 tab color script
+alias it2="it2-b16-theme"
 
 # ------------------------------------------------------------------------------
 # => Optional Packages
