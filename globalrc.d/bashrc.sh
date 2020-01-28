@@ -134,6 +134,8 @@ if [[ "$(uname -s)" == "Darwin"* ]]; then
 fi
 # Iterm2 tab color script
 alias it2="it2-b16-theme"
+# Shortcut for sourcing venv activate script
+alias venv-activate=". venv/bin/activate"
 
 # ------------------------------------------------------------------------------
 # => Optional Packages
