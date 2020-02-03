@@ -32,15 +32,16 @@ echo 'New .bashrc created.'
 # initialize submodules
 echo 'Initializing plugin submodules...'
 current_dir="$(pwd)"
-
 cd ~/.bash_config
-
 git submodule update --init --recursive
-
 cd "$current_dir"
 unset current_dir
-
 echo 'Plugin submodules initialized.'
+
+# default gitignore
+echo 'Configuring global gitignore...'
+git config --global core.excludesfile ~/.bash_config/globalrc.d/git/gitignore_global
+echo 'Global gitignore configured.'
 
 echo 'Bash config installed.'
 echo 'Restarting bash.'
