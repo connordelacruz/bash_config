@@ -37,5 +37,5 @@ yarn-error.log*
 .env.production.local
 
 # Custom git templates
-.gitmessage
+.gitmessage_local*
 
