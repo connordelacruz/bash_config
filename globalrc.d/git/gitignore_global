@@ -36,3 +36,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# Custom git templates
+.gitmessage
+
