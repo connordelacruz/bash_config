@@ -4,29 +4,27 @@
 # Author: Connor de la Cruz
 # Repo: https://github.com/connordelacruz/bash_config
 #
-# Sections:
-# => General
-# => Aliases
-# => Color Prompt
-# => PS1
-# => Shorthand Functions
+# TODO overhaul formatting and docblock
 # ==============================================================================
 
+# Environment ==================================================================
 
-# ------------------------------------------------------------------------------
-# => General
-# ------------------------------------------------------------------------------
+# PATH -------------------------------------------------------------------------
+export PATH="/usr/local/bin:$SRC_LOCAL_PATH/bin:$PATH"
 
-# ---------------------------------------
-# -> Environment
-# ---------------------------------------
+# General ----------------------------------------------------------------------
+# Update window size after each command
+shopt -s checkwinsize
+# Enable extended globbing
+shopt -s extglob
+# cd into variables
+shopt -s cdable_vars
+# auto cd if command is a name of a directory
+shopt -s autocd
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# PATH
-usr_local_bin="/usr/local/bin"
-localrc_bin="$SRC_LOCAL_PATH/bin"
-export PATH="$usr_local_bin:$localrc_bin:$PATH"
-unset local_bin
-
+# Completion -------------------------------------------------------------------
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -39,28 +37,17 @@ if ! shopt -oq posix; then
 fi
 # Enable bash completion (MacOS)
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-# Update window size after each command
-shopt -s checkwinsize
-# Enable extended globbing
-shopt -s extglob
-# cd into variables
-shopt -s cdable_vars
-# auto cd if command is a name of a directory
-shopt -s autocd
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# ---------------------------------------
-# -> History
-# ---------------------------------------
-
+# History ----------------------------------------------------------------------
 # Append to the history file, don't overwrite it
 shopt -s histappend
 # Save multi-line commands as a single history entry
 shopt -s cmdhist
 # Don't put duplicate lines or lines starting with space in the history
+# TODO EXPORT??
 HISTCONTROL=ignoreboth
 # Record each line of history after issuing it
+# TODO EXPORT??
 PROMPT_COMMAND="history -a"
 # Set size of command history
 # If on version 4.3+, set to -1 for unlimited history
@@ -73,12 +60,7 @@ else
     HISTFILESIZE=200000
 fi
 
-# ---------------------------------------
-# -> Defaults
-# ---------------------------------------
-
-## Editors
-
+# Editor -----------------------------------------------------------------------
 # See what members of the vi family are available
 if [[ "$(command -v nvim)" ]]; then
     export VISUAL=nvim
@@ -89,15 +71,30 @@ else
 fi
 # set EDITOR to match
 export EDITOR="$VISUAL"
+# Use vim as man pager
+export MANPAGER="$EDITOR -c MANPAGER -"
 
-# General Editor Aliases
+# Misc -------------------------------------------------------------------------
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Aliases ======================================================================
+
+# ls ---------------------------------------------------------------------------
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF' # TODO: merge w/ le()
+
+# git --------------------------------------------------------------------------
+# Quickly push a new branch to remote for the first time
+alias gpush-head='git push -u origin HEAD'
+# Commit all tracked (verbose)
+alias gcommit-av='git commit -av'
+
+# Editor -----------------------------------------------------------------------
 alias e="$EDITOR"
-alias :e="$EDITOR"
-
 # Vim-specific Configs/aliases
 if [[ "$EDITOR" == *"vi"* ]]; then
-    # Use vim as man pager
-    export MANPAGER="$EDITOR -c MANPAGER -"
     # Shorthand for opening multiple files in splits/tabs
     alias sp="$EDITOR -o"
     alias vsp="$EDITOR -O"
@@ -106,23 +103,15 @@ if [[ "$EDITOR" == *"vi"* ]]; then
     alias e="tabe"
 fi
 
-# ------------------------------------------------------------------------------
-# => Aliases
-# ------------------------------------------------------------------------------
+# python -----------------------------------------------------------------------
+# Shortcut for creating a new virtual python environment in venv/
+alias venv-init="python -m venv venv"
+# Shortcut for sourcing venv activate script
+alias venv-activate=". venv/bin/activate"
 
-# ls
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-# Bad habits developed during a Windows sysadmin internship
-alias md='mkdir'
-alias cls='clear'
-# Quickly push a new branch to remote for the first time
-alias gpush-head='git push -u origin HEAD'
-# Commit all tracked (verbose)
-alias gcommit-av='git commit -av'
-# MacOS aliases
+# MacOS aliases ----------------------------------------------------------------
 if [[ "$(uname -s)" == "Darwin"* ]]; then
+    # Clipboard
     # Echo the contents of the clipboard
     alias clipboard-contents="echo \$(pbpaste)"
     # Copy current directory path without newline
@@ -133,36 +122,19 @@ if [[ "$(uname -s)" == "Darwin"* ]]; then
     alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
     # Clone a git repo using the clipboard contents as the URL
     alias gclone-paste="git clone \$(pbpaste)"
+
+    # Iterm2 tab color script
+    alias it2="it2-b16-theme"
 fi
-# Iterm2 tab color script
-alias it2="it2-b16-theme"
-# Shortcut for creating a new virtual python environment in venv/
-alias venv-init="python -m venv venv"
-# Shortcut for sourcing venv activate script
-alias venv-activate=". venv/bin/activate"
 
-# ------------------------------------------------------------------------------
-# => Optional Packages
-# ------------------------------------------------------------------------------
+# Color ========================================================================
 
-# ---------------------------------------
-# -> fzf
-# ---------------------------------------
-
-# https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# ------------------------------------------------------------------------------
-# => Color Prompt
-# ------------------------------------------------------------------------------
-
-# ---------------------------------------
-# -> Platform-Specific Configs
+# Platform-Specific Configs ----------------------------------------------------
 # NOTE: The COLORTERM=truecolor stuff is for use with our vim_runtime config
 # so it can appropriately set color space settings and select a colorscheme
 # that's compatible with the terminal emulator.
-# ---------------------------------------
 
+# TODO figure this out
 # Set $COLORTERM to truecolor for iTerm2
 if [[ "$TERM_PROGRAM" == "iTerm.app" || "$TERM_PROGRAM" == "Hyper" ]]; then
     export COLORTERM=truecolor
@@ -185,10 +157,8 @@ fi
 #       env COLORTERM=truecolor /bin/bash
 # - Set 'When command exits' to 'Exit the terminal'
 
-# ---------------------------------------
-# -> Check Color Support
-# ---------------------------------------
-
+# Check Color Support ----------------------------------------------------------
+# TODO move this?
 case "$TERM" in
     xterm-color|xterm-256color)
         color_prompt=yes
@@ -200,9 +170,8 @@ else
     color_prompt=
 fi
 
-# ---------------------------------------
-# -> Color Aliases and Environment Variables
-# ---------------------------------------
+# Color Aliases and Environment Variables --------------------------------------
+# TODO just do environment vars and stuff here, move alias section below this and color aliases into that section?
 if [ "$color_prompt" = yes ]; then
     # ls
     # MacOS doesn't have --color option
@@ -227,11 +196,9 @@ if [ "$color_prompt" = yes ]; then
     fi
 fi
 
-# ------------------------------------------------------------------------------
-# => PS1
-# ------------------------------------------------------------------------------
-
+# Prompt -----------------------------------------------------------------------
+# TODO find a way to extract this to init.sh
 # Source prompt/init.sh, which has PS1/Powerline configs
 [ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ] && . "$SRC_GLOBAL_PATH/prompt/init.sh"
-unset color_prompt force_color_prompt
+unset color_prompt
 
