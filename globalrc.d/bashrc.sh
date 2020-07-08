@@ -119,6 +119,8 @@ alias md='mkdir'
 alias cls='clear'
 # Quickly push a new branch to remote for the first time
 alias gpush-head='git push -u origin HEAD'
+# Commit all tracked (verbose)
+alias gcommit-av='git commit -av'
 # MacOS aliases
 if [[ "$(uname -s)" == "Darwin"* ]]; then
     # Echo the contents of the clipboard
