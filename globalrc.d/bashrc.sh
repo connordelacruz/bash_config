@@ -172,10 +172,3 @@ if [[ -n "$COLOR_PROMPT" ]]; then
     fi
 fi
 
-# Color ========================================================================
-
-# Prompt -----------------------------------------------------------------------
-# TODO find a way to extract this to init.sh
-# Source prompt/init.sh, which has PS1/Powerline configs
-[ -f "$SRC_GLOBAL_PATH/prompt/init.sh" ] && . "$SRC_GLOBAL_PATH/prompt/init.sh"
-
