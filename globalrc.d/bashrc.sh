@@ -15,8 +15,6 @@ export PATH="/usr/local/bin:$SRC_LOCAL_PATH/bin:$PATH"
 shopt -s checkwinsize
 # Enable extended globbing
 shopt -s extglob
-# cd into variables
-shopt -s cdable_vars
 # auto cd if command is a name of a directory
 shopt -s autocd
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -112,8 +110,14 @@ alias L='ls -CF'
 # Use ls if $1 is a directory or less if it's a file (or something else)
 # Defaults to "." to if no argument is provided (i.e. ls .)
 le() {
-    local target="${1:-.}"
-    [ -d "$target" ] && L "$target" || less "$target"
+    # Wild card expansion
+    if [[ $# > 1 ]]; then
+        L "$@"
+    # Otherwise assume directory or file
+    else
+        local target="${1:-.}"
+        [[ -d "$target" ]] && L "$target" || less "$target"
+    fi
 }
 alias l='le'
 
@@ -128,6 +132,8 @@ cdl() {
     cd "$@" && L
 }
 alias c='cdl'
+complete -o nospace -F _cd cdl
+complete -o nospace -F _cd c
 
 # git --------------------------------------------------------------------------
 # Quickly push a new branch to remote for the first time
