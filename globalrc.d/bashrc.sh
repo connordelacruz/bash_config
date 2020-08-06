@@ -138,9 +138,21 @@ complete -o nospace -F _cd c
 # git --------------------------------------------------------------------------
 # Quickly push a new branch to remote for the first time
 alias gpush-head='git push -u origin HEAD'
+# Commit all staged (verbose)
+alias gcommit-v='git commit -v'
+alias gcv='gcommit-v'
 # Commit all tracked (verbose)
 alias gcommit-av='git commit -av'
 alias gco='gcommit-av'
+# Print current branch name
+alias git-current-branch='git symbolic-ref --short HEAD'
+
+# Show all commits since base branch. Takes optional arg for base branch
+git-log-since-branch() {
+    local base="${1:-master}"
+    git log "$base..$(git-current-branch)"
+}
+alias git-log-since-dev='git-log-since-branch develop'
 
 # Delete all merged local git branches except master and develop.
 # Prompts for confirmation by default. The -y arg can be used to skip the prompt
