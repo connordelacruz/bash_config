@@ -19,6 +19,9 @@ shopt -s extglob
 shopt -s autocd
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# Suppress perl warning
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Completion -------------------------------------------------------------------
 # enable programmable completion features (you don't need to enable
