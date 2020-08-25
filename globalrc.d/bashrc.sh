@@ -305,3 +305,11 @@ ts-file() {
     fi
 }
 
+# Notica -----------------------------------------------------------------------
+
+# NOTE: environment variable NOTICA_ID must be set to the unique URL ID
+notica() {
+    [[ -z "$NOTICA_ID" ]] && echo "NOTICA_ID must be set to use this function." && return 1
+    curl --data "d:$*" "https://notica.us/?$NOTICA_ID"
+}
+
