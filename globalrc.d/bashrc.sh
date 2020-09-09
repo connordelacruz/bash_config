@@ -182,6 +182,7 @@ if [[ "$EDITOR" == *"vi"* ]]; then
     # Shorthand for opening multiple files in splits/tabs
     alias sp="$EDITOR -o"
     alias vsp="$EDITOR -O"
+    alias vs="vsp"
     alias tabe="$EDITOR -p"
     # tab by default with e command
     alias e="tabe"
