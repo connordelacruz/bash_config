@@ -19,7 +19,7 @@ __ps1() {
     esac
 
     ps1() {
-        if [ "$color_prompt" = yes ]; then
+        if [[ -n "$COLOR_PROMPT" ]]; then
             local user="$COLOR_USER\u@\h$RESET "
             local cwd="$COLOR_CWD\w$RESET"
             local symbol="\n$COLOR_SYMBOL$PS_SYMBOL $RESET"
