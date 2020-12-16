@@ -14,7 +14,9 @@ current_dir="$(pwd)"
 # vim_runtime
 if [ -f ~/.vim_runtime/update.sh ]; then
     echo 'Updating vim runtime...'
-    . ~/.vim_runtime/update.sh
+    cd ~/.vim_runtime/
+    git pull
+    cd "$current_dir"
 fi
 
 # bash_config
