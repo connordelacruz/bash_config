@@ -100,6 +100,10 @@ if [[ $(tput colors) > 0 ]]; then
     export GREP_COLORS='ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36'
 fi
 
+# Ack --------------------------------------------------------------------------
+# Global ackrc
+export ACKRC="$SRC_GLOBAL_PATH/ack/ackrc_global"
+
 # Misc -------------------------------------------------------------------------
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

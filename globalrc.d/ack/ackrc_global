@@ -1,0 +1,4 @@
+# TODO: move to bash_config, add to global gitignore
+
+# Always Sort
+--sort-files
