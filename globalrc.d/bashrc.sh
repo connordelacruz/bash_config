@@ -207,7 +207,7 @@ if [[ "$(uname -s)" == "Darwin"* ]]; then
     # Shortcut to cd into copied directory using copy-pwd
     alias cd-paste="cd \"\$(pbpaste)\""
     # Copy previous command to clipboard
-    alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' | pbcopy"
+    alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' ORS='' | pbcopy"
     # Clone a git repo using the clipboard contents as the URL
     alias gclone-paste="git clone \$(pbpaste)"
     # Iterm2 tab color script
