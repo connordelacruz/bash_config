@@ -4,3 +4,6 @@
 [submodule "modules/iterm2-tab-color"]
 	path = modules/iterm2-tab-color
 	url = https://github.com/connordelacruz/iterm2-tab-color.git
+[submodule "modules/chicago-ascii.sh"]
+	path = modules/chicago-ascii.sh
+	url = https://github.com/connordelacruz/chicago-ascii.sh.git

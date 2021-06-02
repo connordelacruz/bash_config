@@ -20,3 +20,6 @@ export SRC_MODULE_PATH="$HOME/.bash_config/modules"
 [ -f "$SRC_MODULE_PATH/init.sh" ] && . "$SRC_MODULE_PATH/init.sh"
 # Local configurations
 [ -f "$SRC_LOCAL_PATH/init.sh" ] && . "$SRC_LOCAL_PATH/init.sh"
+# Code to run after everything is sourced
+# TODO: allow local override
+[ -f "$SRC_GLOBAL_PATH/after.sh" ] && . "$SRC_GLOBAL_PATH/after.sh"
