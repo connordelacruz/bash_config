@@ -26,13 +26,14 @@ __powerline() {
     readonly SYMBOL_GIT_PUSH='↑'
     readonly SYMBOL_GIT_PULL='↓'
 
-    if [[ -z "$PS_SYMBOL" ]]; then
-      case "$(uname)" in
-          Darwin)   PS_SYMBOL='';;
-          Linux)    PS_SYMBOL='$';;
-          *)        PS_SYMBOL='%';;
-      esac
-    fi
+    # UNCOMMENT for custom per-OS PS_SYMBOL
+    # if [[ -z "$PS_SYMBOL" ]]; then
+    #   case "$(uname)" in
+    #       Darwin)   PS_SYMBOL='';;
+    #       Linux)    PS_SYMBOL='$';;
+    #       *)        PS_SYMBOL='%';;
+    #   esac
+    # fi
 
     # XTerm Window Title
     case "$TERM" in
@@ -44,7 +45,8 @@ __powerline() {
 
 
     __git_info() {
-        [[ $POWERLINE_GIT = 0 ]] && return # disabled
+        # UNCOMMENT for config var support
+        # [[ $POWERLINE_GIT = 0 ]] && return # disabled
         hash git 2>/dev/null || return # git not found
         local git_eng="env LANG=C git"   # force git output in English to make our work easier
 
@@ -80,34 +82,35 @@ __powerline() {
 
 
     __virtualenv_info() {
-        # TODO: || [ -z "$VIRTUAL_ENV_DISABLE_PROMPT" ] ?
-        [[ $POWERLINE_VIRTUALENV = 0 ]] && return # disabled
+        # UNCOMMENT for config var support
+        # [[ $POWERLINE_VIRTUALENV = 0 ]] && return # disabled
         if [ -n "$VIRTUAL_ENV" ]; then
             printf "(`basename \"$VIRTUAL_ENV\"`) "
         fi
     }
 
     __jobs_info() {
-        [[ $POWERLINE_JOBS = 0 ]] && return # disabled
+        # UNCOMMENT for config var support
+        # [[ $POWERLINE_JOBS = 0 ]] && return # disabled
         local job_count="$(jobs -p | wc -l | tr -d " ")"
         [[ $job_count = 0 ]] && return # No jobs
         printf "(jobs: $job_count) "
     }
 
     ps1() {
-        # Check the exit code of the previous command and display different
-        # colors in the prompt accordingly.
-        if [ $POWERLINE_EXIT_CODE_COLOR -ne 0 ]; then
-            if [ $? -eq 0 ]; then
-                local symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
-            else
-                local symbol="$COLOR_FAILURE$PS_SYMBOL $RESET"
-            fi
-        else
-            local symbol="$COLOR_SYMBOL$PS_SYMBOL $RESET"
-        fi
+        local symbol="$COLOR_SYMBOL$PS_SYMBOL $RESET"
+        # UNCOMMENT to check the exit code of the previous command and display
+        # different colors in the prompt accordingly.
+        # if [ $POWERLINE_EXIT_CODE_COLOR -ne 0 ]; then
+        #     if [ $? -eq 0 ]; then
+        #         symbol="$COLOR_SUCCESS$PS_SYMBOL $RESET"
+        #     else
+        #         symbol="$COLOR_FAILURE$PS_SYMBOL $RESET"
+        #     fi
+        # fi
 
         local cwd="$COLOR_CWD\w$RESET"
+
         # Bash by default expands the content of PS1 unless promptvars is disabled.
         # We must use another layer of reference to prevent expanding any user
         # provided strings, which would cause security issues.
@@ -127,11 +130,11 @@ __powerline() {
             local jobs="$COLOR_JOBS$(__jobs_info)$RESET"
         fi
 
-        if [ $POWERLINE_SHOW_USER -ne 0 ]; then
-            local user="$COLOR_USER\u$RESET "
-        else
-            local user=
-        fi
+        local user=
+        # UNCOMMENT to support including user
+        # if [ $POWERLINE_SHOW_USER -ne 0 ]; then
+        #     local user="$COLOR_USER\u$RESET "
+        # fi
 
         PS1="$PREFIX$jobs$venv$user$cwd$git\n$symbol"
     }
