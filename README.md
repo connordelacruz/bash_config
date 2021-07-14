@@ -6,6 +6,12 @@ terminal emulators, while allowing for additional configurations and overrides
 specific to each environment.
 
 
+## TODO:
+
+- Ensure docs are up-to-date
+- Better variable scoping for configurations
+
+
 ## Installation
 
 Clone repo as ~/.bash_config and run install script:
@@ -172,12 +178,13 @@ run `ls <directory>`.
 - `install.sh` - Backs up the existing `~/.bashrc` (if one exists) and creates a
   one-line `.bashrc` that sources `~/.bash_config/init.sh`
 - `update.sh` - Pulls updates to main repo and submodules
-- `init.sh` - Sources `globalrc.d/init.sh` and `localrc.d/init.sh`
+- `init.sh` - Sources `globalrc.d/init.sh` and `localrc.d/init.sh`, then `globalrc.d/after.sh` and `localrc.d/after.sh`
 - `globalrc.d/` - Shared runtime configuration files  
     - `init.sh` - Sources all bash configuration files in directory
     - `bashrc.sh` - Bash runtime configurations
     - `inputrc` - Input configurations
     - `functions.sh` - Declarations of bash functions
+    - `after.sh` - Sourced after all other `init.sh` scripts are sourced
     - `prompt/` - Configurations for PS1 prompt
         - `config.sh` - Configuration variables for PS1/powerline prompts
         - `init.sh` - Sources `config.sh` and one of the following scripts
@@ -197,15 +204,10 @@ run `ls <directory>`.
         - `config.sh`
         - `aliases.sh`  
         - `functions.sh`
+    - `after.sh` - Sourced after all other `init.sh` scripts and `globalrc.d/after.sh` are sourced
 - `modules/` - git submodules  
     - `config.sh` - Configurations for enabled/disabled submodules
     - `init.sh` - Sources `config.sh` and all enabled modules
     - [`base16-shell`](https://github.com/chriskempson/base16-shell)
     - [`iterm2-tab-color`](https://github.com/connordelacruz/iterm2-tab-color)
-
-
-## TODO:
-
-- Ensure docs are up-to-date
-- Better variable scoping for configurations
 
