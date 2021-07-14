@@ -7,6 +7,9 @@
 # (This should already be configured if installed with install.sh)
 # ==============================================================================
 
+# Ack
+.ackrc
+
 # MacOS
 .DS_Store
 

@@ -45,6 +45,8 @@ directory.
 submodule for quickly setting the terminal colorscheme.
 - [iterm2-tab-color](https://github.com/connordelacruz/iterm2-tab-color)
   adds functions for setting the tab color in iTerm2.
+- [chicago-ascii.sh](https://github.com/connordelacruz/chicago-ascii.sh) used to
+  display Chicago skyline or flag on startup
 
 
 ### Enabling, Disabling, and Configuring Modules
