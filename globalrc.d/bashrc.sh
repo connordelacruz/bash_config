@@ -152,18 +152,17 @@ alias gcv='gcommit-v'
 alias gcommit-av='git commit -av'
 alias gco='gcommit-av'
 # Print current branch name
-alias git-current-branch='git symbolic-ref --short HEAD'
+alias gcurrent-branch='git symbolic-ref --short HEAD'
 
 # Show all commits since base branch. Takes optional arg for base branch
-git-log-since-branch() {
+glog-since-branch() {
     local base="${1:-master}"
-    git log "$base..$(git-current-branch)"
+    git log "$base..$(gcurrent-branch)"
 }
-alias git-log-since-dev='git-log-since-branch develop'
 
 # Delete all merged local git branches except master and develop.
 # Prompts for confirmation by default. The -y arg can be used to skip the prompt
-git-branch-cleanup() {
+gbranch-cleanup() {
     local yn
     if [[ $# > 0 ]] && [[ "$1" == "-y" ]]; then
         yn="y"
@@ -177,6 +176,30 @@ git-branch-cleanup() {
         *)
             ;;
     esac
+}
+
+# Open a file or directory in GitHub (current branch's revision)
+# If no args specified, will open root of repo.
+#
+# Usage:
+#   gopen-url [<file>]
+gopen-url() {
+if [ -d .git ]; then
+    local BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    local FILEPATH="$1"
+    local BASE=$(git config --get remote.origin.url | sed s/\\.git// | sed 's/:/\//' | sed 's/.*github.com/https:\/\/github.com/')
+    local TARG_TYPE
+    if [[ $# -eq 0 ]] || [[ -d "$FILEPATH" ]]; then
+        TARG_TYPE="tree"
+    else
+        TARG_TYPE="blob"
+    fi
+    local URL="$BASE/$TARG_TYPE/$BRANCH/$FILEPATH"
+    open "$URL"
+    echo "Opened $URL"
+else
+    echo "Not a git repo"
+fi
 }
 
 # Editor -----------------------------------------------------------------------
