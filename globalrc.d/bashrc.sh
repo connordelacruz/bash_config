@@ -178,15 +178,17 @@ gbranch-cleanup() {
     esac
 }
 
-# Open a file or directory in GitHub (current branch's revision)
+# Open a file or directory in GitHub.
+#
 # If no args specified, will open root of repo.
+# If no branch is specified, will use the current branch.
 #
 # Usage:
-#   gopen-url [<file>]
+#   gopen-url [<file or dir>] [<branch>]
 gopen-url() {
 if [ -d .git ]; then
-    local BRANCH=$(git rev-parse --abbrev-ref HEAD)
     local FILEPATH="$1"
+    local BRANCH="${2:-$(git rev-parse --abbrev-ref HEAD)}"
     local BASE=$(git config --get remote.origin.url | sed s/\\.git// | sed 's/:/\//' | sed 's/.*github.com/https:\/\/github.com/')
     local TARG_TYPE
     if [[ $# -eq 0 ]] || [[ -d "$FILEPATH" ]]; then
@@ -198,7 +200,7 @@ if [ -d .git ]; then
     open "$URL"
     echo "Opened $URL"
 else
-    echo "Not a git repo"
+    echo "Not in a git repo."
 fi
 }
 
