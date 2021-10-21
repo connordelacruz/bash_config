@@ -7,18 +7,18 @@
 __powerline() {
     # Colorscheme
     # General
-    readonly RESET='\[\033[m\]'
+    readonly RESET="$(tput sgr0)"
     # PS1 item colors
-    readonly COLOR_USER='\[\033[01;36m\]' # cyan (bold)
-    readonly COLOR_CWD='\[\033[0;34m\]' # blue
-    readonly COLOR_SYMBOL='\[\033[02;37m\]'
+    readonly COLOR_USER="$(tput bold)$(tput setaf 6)" # cyan (bold)
+    readonly COLOR_CWD="$(tput setaf 4)" # blue
+    readonly COLOR_SYMBOL="$(tput setaf 8)" # gray
     # Powerline function colors
-    readonly COLOR_GIT='\[\033[0;35m\]' # magenta
-    readonly COLOR_VIRTUALENV='\[\033[0;36m\]' # cyan
-    readonly COLOR_JOBS='\[\033[0;32m\]' # green
+    readonly COLOR_GIT="$(tput setaf 3)" # yellow
+    readonly COLOR_VIRTUALENV="$(tput setaf 6)" # cyan
+    readonly COLOR_JOBS="$(tput setaf 1)" # red
     # Command exit code colors
-    readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
-    readonly COLOR_FAILURE='\[\033[0;31m\]' # red
+    readonly COLOR_SUCCESS="$(tput setaf 2)" # green
+    readonly COLOR_FAILURE="$(tput setaf 1)" # red
 
     # Symbols
     readonly SYMBOL_GIT_BRANCH=''
