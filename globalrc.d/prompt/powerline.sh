@@ -7,20 +7,21 @@
 __powerline() {
     # Colorscheme
     # General
-    readonly RESET="$(tput sgr0)"
+    readonly RESET='\[\033[m\]'
     # PS1 item colors
-    readonly COLOR_USER="$(tput bold)$(tput setaf 6)" # cyan (bold)
-    readonly COLOR_CWD="$(tput setaf 4)" # blue
-    readonly COLOR_SYMBOL="$(tput setaf 8)" # gray
+    # readonly COLOR_USER='\[\033[01;36m\]' # cyan (bold)
+    readonly COLOR_CWD='\[\033[0;34m\]' # blue
+    readonly COLOR_SYMBOL='\[\033[0;90m\]' # gray
     # Powerline function colors
-    readonly COLOR_GIT="$(tput setaf 3)" # yellow
-    readonly COLOR_VIRTUALENV="$(tput setaf 6)" # cyan
-    readonly COLOR_JOBS="$(tput setaf 1)" # red
+    readonly COLOR_GIT='\[\033[0;33m\]' # yellow
+    readonly COLOR_VIRTUALENV='\[\033[0;36m\]' # cyan
+    readonly COLOR_JOBS='\[\033[0;31m\]' # red
     # Command exit code colors
-    readonly COLOR_SUCCESS="$(tput setaf 2)" # green
-    readonly COLOR_FAILURE="$(tput setaf 1)" # red
+    # readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
+    # readonly COLOR_FAILURE='\[\033[0;31m\]' # red
 
     # Symbols
+    # TODO: per-symbol colors?
     readonly SYMBOL_GIT_BRANCH=''
     readonly SYMBOL_GIT_MODIFIED='*'
     readonly SYMBOL_GIT_PUSH='↑'
