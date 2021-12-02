@@ -20,7 +20,7 @@ if [ -d "$SRC_MODULE_PATH/chicago-ascii.sh" ]; then
             script_path="$SRC_MODULE_PATH/chicago-ascii.sh/flag.sh"
         fi
         clear
-        [ -f "$script_path" ] && . "$script_path" $script_args
+        [ -f "$script_path" ] && "$script_path" $script_args
         unset script_path script_args
         export STARTUP_ASCII_SHOWN=1
     fi
