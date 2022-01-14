@@ -186,22 +186,37 @@ gbranch-cleanup() {
 # Usage:
 #   gopen-url [<file or dir>] [<branch>]
 gopen-url() {
-if [ -d .git ]; then
-    local FILEPATH="$1"
-    local BRANCH="${2:-$(git rev-parse --abbrev-ref HEAD)}"
-    local BASE=$(git config --get remote.origin.url | sed s/\\.git// | sed 's/:/\//' | sed 's/.*github.com/https:\/\/github.com/')
-    local TARG_TYPE
-    if [[ $# -eq 0 ]] || [[ -d "$FILEPATH" ]]; then
-        TARG_TYPE="tree"
-    else
-        TARG_TYPE="blob"
-    fi
-    local URL="$BASE/$TARG_TYPE/$BRANCH/$FILEPATH"
-    open "$URL"
-    echo "Opened $URL"
-else
+local REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+# Non-zero exit code likely means we're not in a git repo
+if [[ $? -ne 0 ]]; then
     echo "Not in a git repo."
+    return 1
 fi
+# Get filepath from 1st arg (if provided)
+local FILEPATH="$1"
+# If 2nd arg is provided, use that as the branch, otherwise use the currently checked out one
+local BRANCH="${2:-$(git rev-parse --abbrev-ref HEAD)}"
+# Get URL for repo
+local BASE=$(git config --get remote.origin.url | sed s/\\.git// | sed 's/:/\//' | sed 's/.*github.com/https:\/\/github.com/')
+# Determine if target file is a directory or file
+local TARG_TYPE
+if [[ $# -eq 0 ]] || [[ -d "$FILEPATH" ]]; then
+    # Directories use 'tree' in their URLs
+    TARG_TYPE="tree"
+    # TODO: figure out how to handle case where we aren't in the repo root
+elif [[ -f "$FILEPATH" ]]; then
+    # Files use 'blob' in their URLs
+    TARG_TYPE="blob"
+    # Handle relative paths
+    FILEPATH="$(git ls-files --full-name "$FILEPATH")"
+else
+    # If we get here, then $1 is not a valid file/dir
+    echo "$1 could not be resolved to a file or directory."
+    return 1
+fi
+local URL="$BASE/$TARG_TYPE/$BRANCH/$FILEPATH"
+open "$URL"
+echo "Opened $URL"
 }
 
 # Editor -----------------------------------------------------------------------
