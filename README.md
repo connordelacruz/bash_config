@@ -5,12 +5,20 @@ and consistent across a variety of operating systems, bash versions, and
 terminal emulators, while allowing for additional configurations and overrides
 specific to each environment.
 
+--------------------------------------------------------------------------------
+
+## OLD README WARNING
+
+**I have updated this setup a lot and haven't kept up with the README, so a lot of this is probably out-of-date. It's on my list of things to do but since this is mostly for personal use it's low-priority.**
+
+--------------------------------------------------------------------------------
 
 ## TODO:
 
 - Ensure docs are up-to-date
 - Better variable scoping for configurations
 
+--------------------------------------------------------------------------------
 
 ## Installation
 
