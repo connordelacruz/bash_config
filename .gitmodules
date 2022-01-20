@@ -7,3 +7,6 @@
 [submodule "modules/chicago-ascii.sh"]
 	path = modules/chicago-ascii.sh
 	url = https://github.com/connordelacruz/chicago-ascii.sh.git
+[submodule "modules/diff-so-fancy"]
+	path = modules/diff-so-fancy
+	url = https://github.com/so-fancy/diff-so-fancy.git

@@ -38,10 +38,8 @@ cd "$current_dir"
 unset current_dir
 echo 'Plugin submodules initialized.'
 
-# default gitignore
-echo 'Configuring global gitignore...'
-git config --global core.excludesfile ~/.bash_config/globalrc.d/git/gitignore_global
-echo 'Global gitignore configured.'
+# Setup git configs
+~/.bash_config/install_git.sh
 
 echo 'Bash config installed.'
 echo 'Restarting bash.'
