@@ -49,5 +49,7 @@ main() {
         fi
         echo ''
     fi
+    # Post-install =============================================================
+    echo 'Git config setup finished.'
 }
 main "$@"

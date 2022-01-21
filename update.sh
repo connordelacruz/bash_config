@@ -18,6 +18,7 @@ current_dir="$(pwd)"
 cd ~/.bash_config/
 
 echo 'Pulling recent changes...'
+# TODO: --rebase is probably not great
 git pull --rebase
 
 echo 'Updating submodules...'

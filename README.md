@@ -16,6 +16,7 @@ specific to each environment.
 ## TODO:
 
 - Ensure docs are up-to-date
+    * git stuff (plugins + local)
 - Better variable scoping for configurations
 
 --------------------------------------------------------------------------------

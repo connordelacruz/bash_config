@@ -188,6 +188,7 @@ gbranch-cleanup() {
 gopen-url() {
 local REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
 # Non-zero exit code likely means we're not in a git repo
+# TODO: allow arg to be the root dir of the repo and use git -C ?
 if [[ $? -ne 0 ]]; then
     echo "Not in a git repo."
     return 1
