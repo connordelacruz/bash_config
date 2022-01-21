@@ -19,7 +19,6 @@ main() {
     echo 'Configuring core.excludesfile...'
     local current_core_excludesfile
     current_core_excludesfile="$(git config --global --get core.excludesfile)"
-    # TODO: && file exists
     if [[ $? -gt 0 ]]; then
         git config --global core.excludesfile ~/.bash_config/globalrc.d/git/gitignore_global &&
             echo 'Set core.excludesfile to global gitignore.'
@@ -29,7 +28,7 @@ main() {
     fi
     echo ''
     # Local Configs ============================================================
-    # TODO: if file exists, include gitconfig_local
+    # TODO: if file exists and is not already in include.path, include gitconfig_local
 
     # Module Configs ===========================================================
     . ~/.bash_config/modules/config.sh
@@ -41,10 +40,9 @@ main() {
         # set
         local current_fancy_diff_target_configs
         current_fancy_diff_target_configs="$(git config --global --includes --name-only --get-regexp '(core\.pager|interactive\.diffFilter)')"
-        # TODO: && file exists
         if [[ $? -gt 0 ]]; then
             git config --global --add include.path ~/.bash_config/globalrc.d/git/gitconfig_diff-so-fancy &&
-                echo 'Added gitconfig_diff-so-fancy to include.path.'
+                echo 'Added fancy diff config to include.path.'
         else
             echo 'The following configs required by diff-so-fancy are already configured, will not overwrite:'
             echo "$current_fancy_diff_target_configs"

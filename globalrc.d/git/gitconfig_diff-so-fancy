@@ -1,5 +1,25 @@
+; ==============================================================================
 ; Git configs to include if diff-so-fancy module is enabled
+; ==============================================================================
+; Use diff-so-fancy as pager ---------------------------------------------------
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [interactive]
 	diffFilter = diff-so-fancy --patch
+; Diff colors ------------------------------------------------------------------
+[color "diff"]
+    meta = yellow
+	old = red bold
+    new = green bold
+    frag = blue bold
+    func = cyan bold
+    whitespace = red reverse
+; Diff hunk highlight colors ---------------------------------------------------
+[color "diff-highlight"]
+    oldNormal = "red bold"
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+; diff-so-fancy configs --------------------------------------------------------
+[diff-so-fancy]
+	rulerWidth = 47
