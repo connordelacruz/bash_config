@@ -1,0 +1,5 @@
+; Git configs to include if diff-so-fancy module is enabled
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[interactive]
+	diffFilter = diff-so-fancy --patch

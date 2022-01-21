@@ -25,3 +25,8 @@
 [[ $ENABLE_IT2_TAB_COLOR -gt 0 ]] && [ -f "$SRC_MODULE_PATH/iterm2-tab-color/functions.sh" ] &&
     . "$SRC_MODULE_PATH/iterm2-tab-color/functions.sh"
 
+# Fancy Diff -------------------------------------------------------------------
+# TODO: add global bin so we can just have single command and not everything in this dir
+# TODO: git global configs + colors
+[[ $ENABLE_DIFF_SO_FANCY -gt 0 ]] && [[ -f "$SRC_MODULE_PATH/diff-so-fancy/diff-so-fancy" ]] &&
+    export PATH="$SRC_MODULE_PATH/diff-so-fancy:$PATH"
