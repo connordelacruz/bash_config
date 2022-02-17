@@ -5,18 +5,22 @@
 #   https://github.com/riobard/bash-powerline
 
 __powerline() {
-    # Colorscheme
-    # General
+    # Colorscheme ==============================================================
+    # General ------------------------------------------------------------------
     readonly RESET='\[\033[m\]'
-    # PS1 item colors
-    # readonly COLOR_USER='\[\033[01;36m\]' # cyan (bold)
-    readonly COLOR_CWD='\[\033[0;34m\]' # blue
-    readonly COLOR_SYMBOL='\[\033[0;90m\]' # gray
-    # Powerline function colors
-    readonly COLOR_GIT='\[\033[0;33m\]' # yellow
-    readonly COLOR_VIRTUALENV='\[\033[0;36m\]' # cyan
-    readonly COLOR_JOBS='\[\033[0;31m\]' # red
-    # Command exit code colors
+    # PS1 item colors ----------------------------------------------------------
+    # Current Directory: blue
+    readonly COLOR_CWD='\[\033[0;34m\]'
+    # $ymbol: gray
+    readonly COLOR_SYMBOL='\[\033[0;90m\]'
+    # Powerline function colors ------------------------------------------------
+    # Git: cyan
+    readonly COLOR_GIT='\[\033[0;36m\]'
+    # Venv: yellow
+    readonly COLOR_VIRTUALENV='\[\033[0;33m\]'
+    # Jobs: red
+    readonly COLOR_JOBS='\[\033[0;31m\]'
+    # Command exit code colors -------------------------------------------------
     # readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     # readonly COLOR_FAILURE='\[\033[0;31m\]' # red
 
