@@ -45,8 +45,9 @@ shopt -s histappend
 shopt -s cmdhist
 # Don't put duplicate lines or lines starting with space in the history
 HISTCONTROL=ignoreboth
-# Record each line of history after issuing it
-PROMPT_COMMAND="history -a"
+# Record each line of history after issuing it; clear history; reload history into mem
+# https://www.baeldung.com/linux/preserve-history-multiple-windows#general-solution
+PROMPT_COMMAND="history -a; history -c; history -r"
 # Set size of command history
 # If on version 4.3+, set to -1 for unlimited history
 # https://stackoverflow.com/questions/9457233/unlimited-bash-history
