@@ -141,6 +141,7 @@ __powerline() {
         #     local user="$COLOR_USER\u$RESET "
         # fi
 
+        local ps1_contents="$PREFIX$jobs$venv$user$cwd$git\n$symbol"
         PS1="$PREFIX$jobs$venv$user$cwd$git\n$symbol"
     }
 

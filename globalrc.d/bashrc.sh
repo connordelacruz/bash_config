@@ -277,7 +277,7 @@ if [[ -n "$COLOR_PROMPT" ]]; then
     fi
 fi
 
-# grep -------------------------------------------------------------------------
+# grep/ack ---------------------------------------------------------------------
 # Helper for todo functions. Usage:
 # _todo-grep <target dir> [-c] [-n <max characters>]
 _todo-grep() {
@@ -303,21 +303,72 @@ _todo-grep() {
         esac
         shift
     done
-    grep -RPIino --exclude-dir={.git,.idea,node_modules} --color=$color_arg "(TODO|FIXME).{0,$N}" $targets
+    grep -RPIino --exclude-dir={.git,.idea,node_modules,venv} --color=$color_arg "(TODO|FIXME).{0,$N}" $targets
+}
+
+_todo-ack() {
+    local targets=
+    local color_arg=
+    local pager_arg=
+    local N=80
+    # Get optional args
+    while [ "$1" != "" ]; do
+        case $1 in
+            -c)
+                color_arg="--color"
+                ;;
+            -p)
+                pager_arg="less -R"
+                ;;
+            -n)
+                # Get value following -n flag
+                # (Or fallback to default if no value was passed)
+                shift
+                N=${1:-$N}
+                ;;
+            *)
+                # Any other arg is a target dir
+                targets="$1"
+                ;;
+        esac
+        shift
+    done
+    echo "$pager_arg"
+    ack -o ${color_arg} --pager="${pager_arg}" --ignore-dir={.git,.idea,node_modules,venv} "(TODO|FIXME).{0,$N}" $targets
 }
 
 # Print todo/fixme comments in the specified file/directory
-todo() {
-    # If no args are provided, call from current directory
-    _todo-grep "${@:-.}"
-}
+# (use ack if installed)
+if [[ "$(command -v ack)" ]]; then
+    todo() {
+        _todo-ack "${@:-.}"
+    }
+else
+    todo() {
+        _todo-grep "${@:-.}"
+    }
+fi
 
 # less -------------------------------------------------------------------------
-# Show todo/fixme comments in less
-todo-less() {
-    # If no args are provided, call from current directory
+_todo-less-grep() {
     _todo-grep "${@:-.}" -c | less -R
 }
+
+_todo-less-ack() {
+    _todo-ack "${@:-.}" -p
+}
+
+# Show todo/fixme comments in less
+# (use ack if installed)
+if [[ "$(command -v ack)" ]]; then
+    todo-less() {
+        _todo-less-ack "${@:-.}"
+    }
+else
+    todo-less() {
+        _todo-less-grep "${@:-.}"
+    }
+fi
 
 # Show diff output in less
 diff-less() {
