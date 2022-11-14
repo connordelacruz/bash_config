@@ -23,38 +23,49 @@ set convert-meta off
 set input-meta on
 set output-meta on
 
+# VIM MODE
+# https://stackoverflow.com/questions/7888387/the-way-to-distinguish-command-mode-and-insert-mode-in-bashs-vi-command-line-ed/32614367#32614367
+$if mode=vi
+    # Show mode in prompt
+    set show-mode-in-prompt on
+    # Insert mode string (bold; white fg; cyan bg; vertical bar cursor)
+    set vi-ins-mode-string "\1\e[1;97;46m\2 INSERT \1\e[0m\2 \1\e[6 q\2"
+    # Cmd mode string (bold; white fg; blue bg; block cursor)
+    set vi-cmd-mode-string "\1\e[1;97;44m\2 NORMAL \1\e[0m\2 \1\e[2 q\2"
+$endif
+
 # KEY BINDINGS
 # TODO: https://codeinthehole.com/tips/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
 $if mode=emacs
-# Stolen from CentOS 7 default inputrc
-# TODO: clean up
+    # Stolen from CentOS 7 default inputrc
+    # TODO: clean up
 
-# for linux console and RH/Debian xterm
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
-# commented out keymappings for pgup/pgdown to reach begin/end of history
-#"\e[5~": beginning-of-history
-#"\e[6~": end-of-history
-"\e[5~": history-search-backward
-"\e[6~": history-search-forward
-"\e[3~": delete-char
-"\e[2~": quoted-insert
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
+    # for linux console and RH/Debian xterm
+    "\e[1~": beginning-of-line
+    "\e[4~": end-of-line
+    # commented out keymappings for pgup/pgdown to reach begin/end of history
+    #"\e[5~": beginning-of-history
+    #"\e[6~": end-of-history
+    "\e[5~": history-search-backward
+    "\e[6~": history-search-forward
+    "\e[3~": delete-char
+    "\e[2~": quoted-insert
+    "\e[5C": forward-word
+    "\e[5D": backward-word
+    "\e[1;5C": forward-word
+    "\e[1;5D": backward-word
 
-# for rxvt
-"\e[8~": end-of-line
-"\eOc": forward-word
-"\eOd": backward-word
+    # for rxvt
+    "\e[8~": end-of-line
+    "\eOc": forward-word
+    "\eOd": backward-word
 
-# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
-"\eOH": beginning-of-line
-"\eOF": end-of-line
+    # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+    "\eOH": beginning-of-line
+    "\eOF": end-of-line
 
-# for freebsd console
-"\e[H": beginning-of-line
-"\e[F": end-of-line
+    # for freebsd console
+    "\e[H": beginning-of-line
+    "\e[F": end-of-line
 $endif
 

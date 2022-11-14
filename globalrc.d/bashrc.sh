@@ -59,6 +59,10 @@ else
     HISTFILESIZE=200000
 fi
 
+# Mode -------------------------------------------------------------------------
+# Use vi mode
+set -o vi
+
 # Editor -----------------------------------------------------------------------
 # See what members of the vi family are available
 if [[ "$(command -v nvim)" ]]; then
