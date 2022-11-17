@@ -29,9 +29,9 @@ $if mode=vi
     # Show mode in prompt
     set show-mode-in-prompt on
     # Insert mode string (bold; white fg; cyan bg; vertical bar cursor)
-    set vi-ins-mode-string "\1\e[1;97;46m\2 INSERT \1\e[0m\2 \1\e[6 q\2"
+    set vi-ins-mode-string "\1\e[36m\e[0m\2\1\e[1;97;46m\2INSERT\1\e[0m\2\1\e[36m\e[0m\2\1\e[6 q\2 "
     # Cmd mode string (bold; white fg; blue bg; block cursor)
-    set vi-cmd-mode-string "\1\e[1;97;44m\2 NORMAL \1\e[0m\2 \1\e[2 q\2"
+    set vi-cmd-mode-string "\1\e[0m\21\e[34m\e[0m\2\1\e[1;97;44m\2NORMAL\1\e[0m\21\e[34m\e[0m\2\1\e[2 q\2 "
 $endif
 
 # KEY BINDINGS
