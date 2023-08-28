@@ -75,7 +75,9 @@ fi
 # set EDITOR to match
 export EDITOR="$VISUAL"
 # Use vim as man pager
-export MANPAGER="$EDITOR -c MANPAGER -"
+# TODO: nvim and vim appear to handle this differently?
+# export MANPAGER="$EDITOR -c MANPAGER -"
+export MANPAGER="$EDITOR +Man!"
 
 # Color ------------------------------------------------------------------------
 # Check shell for true color support and set COLORTERM appropriately
