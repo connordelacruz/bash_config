@@ -340,7 +340,7 @@ _todo-ack() {
         shift
     done
     echo "$pager_arg"
-    ack -o ${color_arg} --pager="${pager_arg}" --ignore-dir={.git,.idea,node_modules,venv} "(TODO|FIXME).{0,$N}" $targets
+    ack -oH ${color_arg} --pager="${pager_arg}" --ignore-dir={.git,.idea,node_modules,venv} "(TODO|FIXME).{0,$N}" $targets
 }
 
 # Print todo/fixme comments in the specified file/directory
