@@ -258,6 +258,8 @@ if [[ "$(uname -s)" == "Darwin"* ]]; then
     alias copy-last-cmd="fc -ln -1 | awk '{\$1=\$1}1' ORS='' | pbcopy"
     # Clone a git repo using the clipboard contents as the URL
     alias gclone-paste="git clone \$(pbpaste)"
+    # Set remote origin using clipboard contents as the URL
+    alias gremote-origin-paste='git remote add origin "$(pbpaste)"'
     # Iterm2 tab color script
     alias it2="it2-b16-theme"
 fi
