@@ -417,3 +417,18 @@ notica() {
     curl --data "d:$*" "https://notica.us/?$NOTICA_ID"
 }
 
+# React ------------------------------------------------------------------------
+
+# Shorthand to create minimal react app
+alias create-react-app='npx create-react-app --template cra-template-minimal'
+
+# Create react app and cd into created directory.
+# (Assumes 1st arg is dirname, but will pass whatever to create-react-app)
+cra() {
+    if [[ $# > 0 ]]; then
+        create-react-app "$@" && c "$1"
+    else
+        echo 'Usage: cra <dirname> [<other create-react-app args>]'
+    fi
+}
+
