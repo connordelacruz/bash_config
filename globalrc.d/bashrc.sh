@@ -434,3 +434,14 @@ cra() {
     fi
 }
 
+# goto -------------------------------------------------------------------------
+if [[ "$(command -v goto)" ]]; then
+    alias g=goto
+
+    # 'cdl' but for goto
+    # TODO: can we get tab completion?
+    go() {
+        goto "$1" && l
+    }
+fi
+
