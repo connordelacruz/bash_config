@@ -436,12 +436,12 @@ cra() {
 
 # goto -------------------------------------------------------------------------
 if [[ "$(command -v goto)" ]]; then
-    alias g=goto
-
     # 'cdl' but for goto
-    # TODO: can we get tab completion?
+    # TODO: support other args, only call l if no optional args provided
     go() {
         goto "$1" && l
     }
+    # tab completion
+    complete -o nospace -F _complete_goto_bash go
 fi
 
