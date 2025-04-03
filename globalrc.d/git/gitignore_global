@@ -34,6 +34,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Sophia unit test log
+micro.log.xml
+
 # misc
 .env.local
 .env.development.local
