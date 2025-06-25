@@ -21,6 +21,42 @@ specific to each environment.
 
 --------------------------------------------------------------------------------
 
+## Pre-reqs
+
+### macOS
+
+First install [Homebrew](https://brew.sh):
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Once you finish the brew setup, install bash:
+
+```
+brew install bash
+```
+
+Then add it to /etc/shells:
+
+```
+echo /usr/local/bin/bash | sudo tee -a /etc/shells
+```
+
+And set it as the default shell:
+
+```
+chsh -s /usr/local/bin/bash
+```
+
+Finally, you'll want to make sure to create `~/.bash_profile` and add this line:
+
+```
+source ~/.bashrc
+```
+
+**Note:** If you don't have a `~/bashrc` yet, just create a blank one for now so this profile doesn't break.
+
 ## Installation
 
 Clone repo as ~/.bash_config and run install script:
