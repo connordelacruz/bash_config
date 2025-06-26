@@ -8,7 +8,19 @@
 # Environment ==================================================================
 
 # PATH -------------------------------------------------------------------------
-export PATH="/usr/local/bin:$SRC_LOCAL_PATH/bin:$PATH"
+# Add bash_config local bin path
+export PATH="$SRC_LOCAL_PATH/bin:$PATH"
+
+# (MacOS) Homebrew has different paths depending on system architecture, so make
+# sure to add the correct one to PATH.
+if [[ "$(command -v brew)" ]]; then
+	export BREW_ROOT_PATH="$(brew --prefix)"
+	export BREW_BIN_PATH="$BREW_ROOT_PATH/bin"
+	export PATH="$BREW_BIN_PATH:$PATH"
+fi
+
+# TODO: Do we still wanna add /usr/local/bin if we're on arm64 mac?
+
 
 # General ----------------------------------------------------------------------
 # Update window size after each command
@@ -35,8 +47,9 @@ if ! shopt -oq posix; then
     fi
 fi
 # Enable bash completion (MacOS)
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] &&
-    . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -n "$BREW_ROOT_PATH" ]] &&
+[[ -r "$BREW_ROOT_PATH/etc/profile.d/bash_completion.sh" ]] &&
+    . "$BREW_ROOT_PATH/etc/profile.d/bash_completion.sh"
 
 # History ----------------------------------------------------------------------
 # Append to the history file, don't overwrite it
