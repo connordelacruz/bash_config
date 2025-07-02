@@ -29,16 +29,23 @@ Once you finish the brew setup, install bash:
 brew install bash
 ```
 
-Then add it to /etc/shells:
+The executable should be installed in `"$(brew --prefix)/bin/bash"`. You can
+verify this by running the following and ensuring it prints "1":
 
 ```
-echo /usr/local/bin/bash | sudo tee -a /etc/shells
+[ -f "$(brew --prefix)/bin/bash" ] && echo "1" || echo "0"
+```
+
+Once we've verified the install location, add it to /etc/shells:
+
+```
+echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells
 ```
 
 And set it as the default shell:
 
 ```
-chsh -s /usr/local/bin/bash
+chsh -s "$(brew --prefix)/bin/bash"
 ```
 
 Finally, you'll want to make sure to create `~/.bash_profile` and add this line:
