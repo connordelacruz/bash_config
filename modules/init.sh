@@ -14,11 +14,17 @@
 
 # Base16 Shell
 # --------------------------------
-[[ $ENABLE_BASE16_SHELL -gt 0 ]] && [ -f "$SRC_MODULE_PATH/base16-shell/profile_helper.sh" ] &&
-    [ -n "$PS1" ] && [ -s $SRC_MODULE_PATH/base16-shell/profile_helper.sh ] && eval "$($SRC_MODULE_PATH/base16-shell/profile_helper.sh)"
-# Add colortest command (if enabled)
-[[ $B16_COLORTEST -gt 0 ]] && [ -f "$SRC_MODULE_PATH/base16-shell/colortest" ] &&
-    alias colortest="$SRC_MODULE_PATH/base16-shell/colortest"
+if [[ $ENABLE_BASE16_SHELL -gt 0 ]] && \
+    [ -n "$PS1" ] && \
+    [ -s $SRC_MODULE_PATH/base16-shell/profile_helper.sh ];
+then
+    # Set environment variable and source profile helper
+    export BASE16_SHELL="$SRC_MODULE_PATH/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.sh"
+    # Add colortest command (if enabled)
+    [[ $B16_COLORTEST -gt 0 ]] && [ -f "$BASE16_SHELL/colortest" ] &&
+        alias colortest="$BASE16_SHELL/colortest"
+fi
 
 # iTerm2 Tab Colors
 # --------------------------------
