@@ -2,18 +2,13 @@
 # Sources enabled submodules
 # ==============================================================================
 
-# --------------------------------
-# Import configurations
-# --------------------------------
+# Import configurations ========================================================
+[ -f "$SRC_MODULE_PATH/config.sh" ] && \
+    source "$SRC_MODULE_PATH/config.sh"
 
-[ -f "$SRC_MODULE_PATH/config.sh" ] && . "$SRC_MODULE_PATH/config.sh"
+# Module imports ===============================================================
 
-# --------------------------------
-# Module imports
-# --------------------------------
-
-# Base16 Shell
-# --------------------------------
+# Base16 Shell -----------------------------------------------------------------
 if [[ $ENABLE_BASE16_SHELL -gt 0 ]] && \
     [ -n "$PS1" ] && \
     [ -s $SRC_MODULE_PATH/base16-shell/profile_helper.sh ];
@@ -26,13 +21,17 @@ then
         alias colortest="$BASE16_SHELL/colortest"
 fi
 
-# iTerm2 Tab Colors
-# --------------------------------
-[[ $ENABLE_IT2_TAB_COLOR -gt 0 ]] && [ -f "$SRC_MODULE_PATH/iterm2-tab-color/functions.sh" ] &&
-    . "$SRC_MODULE_PATH/iterm2-tab-color/functions.sh"
+# iTerm2 Tab Colors ------------------------------------------------------------
+[[ $ENABLE_IT2_TAB_COLOR -gt 0 ]] && \
+    [ -f "$SRC_MODULE_PATH/iterm2-tab-color/functions.sh" ] && \
+    source "$SRC_MODULE_PATH/iterm2-tab-color/functions.sh"
 
 # Fancy Diff -------------------------------------------------------------------
-# TODO: add global bin so we can just have single command and not everything in this dir
-# TODO: git global configs + colors
-[[ $ENABLE_DIFF_SO_FANCY -gt 0 ]] && [[ -f "$SRC_MODULE_PATH/diff-so-fancy/diff-so-fancy" ]] &&
+# TODO: It's been a hot minute!!! Are the below TODO's relevant??:
+#      - add global bin so we can just have single command and not everything in this dir
+#      - git global configs + colors
+if [[ $ENABLE_DIFF_SO_FANCY -gt 0 ]] && \
+    [ -f "$SRC_MODULE_PATH/diff-so-fancy/diff-so-fancy" ]; then
+    # Add diff-so-fancy to PATH
     export PATH="$SRC_MODULE_PATH/diff-so-fancy:$PATH"
+fi
