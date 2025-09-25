@@ -8,6 +8,7 @@
 # Environment ==================================================================
 
 # PATH -------------------------------------------------------------------------
+# TODO: move this to localrc.d/init.sh
 # Add bash_config local bin path
 export PATH="$SRC_LOCAL_PATH/bin:$PATH"
 
@@ -18,8 +19,6 @@ if [[ "$(command -v brew)" ]]; then
 	export BREW_BIN_PATH="$BREW_ROOT_PATH/bin"
 	export PATH="$BREW_BIN_PATH:$PATH"
 fi
-
-# TODO: Do we still wanna add /usr/local/bin if we're on arm64 mac?
 
 
 # General ----------------------------------------------------------------------
@@ -74,10 +73,6 @@ else
     HISTFILESIZE=200000
 fi
 
-# Mode -------------------------------------------------------------------------
-# Use vi mode
-# set -o vi
-
 # Editor -----------------------------------------------------------------------
 # See what members of the vi family are available
 if [[ "$(command -v nvim)" ]]; then
@@ -95,6 +90,7 @@ export EDITOR="$VISUAL"
 export MANPAGER="$EDITOR +Man!"
 
 # Color ------------------------------------------------------------------------
+# TODO: we can consolidate these checks:
 # Check shell for true color support and set COLORTERM appropriately
 # (Used in vim configs to determine what theme to use)
 # Set $COLORTERM to truecolor for iTerm2
@@ -123,14 +119,17 @@ if [[ $(tput colors) > 0 ]]; then
 fi
 
 # Ack --------------------------------------------------------------------------
+# TODO: move this to init.sh?
 # Global ackrc
 export ACKRC="$SRC_GLOBAL_PATH/ack/ackrc_global"
 
 # Misc -------------------------------------------------------------------------
+# TODO: did I create this? My fresh install doesn't have this:
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Aliases and Functions ========================================================
+# TODO: extract to file(s) like localrc.d?
 
 # ls ---------------------------------------------------------------------------
 alias ll='ls -alF'
@@ -439,6 +438,7 @@ notica() {
 # Shorthand to create minimal react app
 alias create-react-app='npx create-react-app --template cra-template-minimal'
 
+# TODO: remove and/or update, create-react-app is deprecated
 # Create react app and cd into created directory.
 # (Assumes 1st arg is dirname, but will pass whatever to create-react-app)
 cra() {
