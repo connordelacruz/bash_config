@@ -124,9 +124,8 @@ fi
 export ACKRC="$SRC_GLOBAL_PATH/ack/ackrc_global"
 
 # Misc -------------------------------------------------------------------------
-# TODO: did I create this? My fresh install doesn't have this:
 # https://github.com/junegunn/fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ "$(command -v fzf)" ]] && eval "$(fzf --bash)"
 
 # Aliases and Functions ========================================================
 # TODO: extract to file(s) like localrc.d?
