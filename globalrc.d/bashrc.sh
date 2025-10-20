@@ -16,8 +16,10 @@ export PATH="$SRC_LOCAL_PATH/bin:$PATH"
 # sure to add the correct one to PATH.
 if [[ "$(command -v brew)" ]]; then
 	export BREW_ROOT_PATH="$(brew --prefix)"
-	export BREW_BIN_PATH="$BREW_ROOT_PATH/bin"
-	export PATH="$BREW_BIN_PATH:$PATH"
+    export BREW_BIN_PATH="$BREW_ROOT_PATH/bin"
+    # Also link unversioned Python commands.
+    export BREW_PYTHON_PATH="$(brew --prefix python)/libexec/bin"
+	export PATH="$BREW_BIN_PATH:$BREW_PYTHON_PATH:$PATH"
 fi
 
 
