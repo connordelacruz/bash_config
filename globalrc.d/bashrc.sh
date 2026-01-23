@@ -436,17 +436,13 @@ notica() {
 
 # React ------------------------------------------------------------------------
 
-# Shorthand to create minimal react app
-alias create-react-app='npx create-react-app --template cra-template-minimal'
-
-# TODO: remove and/or update, create-react-app is deprecated
-# Create react app and cd into created directory.
-# (Assumes 1st arg is dirname, but will pass whatever to create-react-app)
-cra() {
+# create-react-app is dead but the world's tutorials haven't been updated lol.
+# Use vite to create a react app.
+create-react-app() {
     if [[ $# > 0 ]]; then
-        create-react-app "$@" && c "$1"
+        npm create vite@latest "$1" -- --template react --no-interactive
     else
-        echo 'Usage: cra <dirname> [<other create-react-app args>]'
+        echo 'Usage: create-react-app <dirname>'
     fi
 }
 
