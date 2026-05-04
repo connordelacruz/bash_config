@@ -44,7 +44,7 @@ if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
         . /usr/share/bash-completion/bash_completion
     elif [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
+     . /etc/bash_completion
     fi
 fi
 # Enable bash completion (MacOS)
@@ -424,6 +424,29 @@ ts-file() {
     else
         echo "Usage: ts-file <filename>"
     fi
+}
+
+# Jekyll -----------------------------------------------------------------------
+
+# Create and edit a new post file.
+# Parameter can be any number of strings, which will be joined together with
+# hyphens when forming the title, e.g.:
+#   one two three -> one-two-three
+# Prefixes a timestamp and postfix .md extension, e.g.:
+#   {timestamp}-{filename-param}.md
+# Must be called from the root of a Jekyll project that has the _posts/ directory.
+jekyll-new-post() {
+    if [[ $# < 1 ]]; then
+        echo "Usage: jekyll-new-post <post file title>"
+        return
+    fi
+    if [[ ! -d "./_posts" ]]; then
+        echo "_posts/ directory not found in current directory"
+        return
+    fi
+    title="$*"
+    formatted_title="${title// /-}"
+    e "./_posts/$(ts)-${formatted_title}.md"
 }
 
 # Notica -----------------------------------------------------------------------
