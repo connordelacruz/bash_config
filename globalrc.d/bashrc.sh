@@ -426,6 +426,15 @@ ts-file() {
     fi
 }
 
+# Copy a file to a backup with the name <filename>.<timestamp>.BAK
+bak() {
+    if [[ $# > 0 ]]; then
+        cp "$1" "$1.$(ts).BAK"
+    else
+        echo "Usage: bak <filename>"
+    fi
+}
+
 # Jekyll -----------------------------------------------------------------------
 
 # Create and edit a new post file.
